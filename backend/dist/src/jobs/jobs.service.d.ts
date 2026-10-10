@@ -1,0 +1,171 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateJobDto } from './dto/create-job.dto';
+import { UpdateJobDto } from './dto/update-job.dto';
+import { FilterJobDto } from './dto/filter-job.dto';
+export declare class JobsService {
+    private readonly prisma;
+    constructor(prisma: PrismaService);
+    findAll(filter: FilterJobDto): Promise<({
+        company: {
+            name: string;
+            logo: string | null;
+            email: string;
+            phone: string | null;
+            location: string;
+            industry: string;
+            description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            id: number;
+        };
+    } & {
+        location: string;
+        description: string;
+        createdAt: Date;
+        updatedAt: Date;
+        id: number;
+        title: string;
+        requirements: string;
+        benefits: string | null;
+        jobType: string;
+        workplaceType: string;
+        category: string;
+        stipendMin: number;
+        stipendMax: number;
+        region: string | null;
+        applicationDeadline: Date;
+        status: string;
+        contactEmail: string;
+        applyUrl: string | null;
+        companyId: number;
+    })[]>;
+    findOne(id: number): Promise<{
+        company: {
+            name: string;
+            logo: string | null;
+            email: string;
+            phone: string | null;
+            location: string;
+            industry: string;
+            description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            id: number;
+        };
+    } & {
+        location: string;
+        description: string;
+        createdAt: Date;
+        updatedAt: Date;
+        id: number;
+        title: string;
+        requirements: string;
+        benefits: string | null;
+        jobType: string;
+        workplaceType: string;
+        category: string;
+        stipendMin: number;
+        stipendMax: number;
+        region: string | null;
+        applicationDeadline: Date;
+        status: string;
+        contactEmail: string;
+        applyUrl: string | null;
+        companyId: number;
+    }>;
+    create(createJobDto: CreateJobDto): Promise<{
+        company: {
+            name: string;
+            logo: string | null;
+            email: string;
+            phone: string | null;
+            location: string;
+            industry: string;
+            description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            id: number;
+        };
+    } & {
+        location: string;
+        description: string;
+        createdAt: Date;
+        updatedAt: Date;
+        id: number;
+        title: string;
+        requirements: string;
+        benefits: string | null;
+        jobType: string;
+        workplaceType: string;
+        category: string;
+        stipendMin: number;
+        stipendMax: number;
+        region: string | null;
+        applicationDeadline: Date;
+        status: string;
+        contactEmail: string;
+        applyUrl: string | null;
+        companyId: number;
+    }>;
+    update(id: number, updateJobDto: UpdateJobDto): Promise<{
+        company: {
+            name: string;
+            logo: string | null;
+            email: string;
+            phone: string | null;
+            location: string;
+            industry: string;
+            description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            id: number;
+        };
+    } & {
+        location: string;
+        description: string;
+        createdAt: Date;
+        updatedAt: Date;
+        id: number;
+        title: string;
+        requirements: string;
+        benefits: string | null;
+        jobType: string;
+        workplaceType: string;
+        category: string;
+        stipendMin: number;
+        stipendMax: number;
+        region: string | null;
+        applicationDeadline: Date;
+        status: string;
+        contactEmail: string;
+        applyUrl: string | null;
+        companyId: number;
+    }>;
+    remove(id: number): Promise<{
+        location: string;
+        description: string;
+        createdAt: Date;
+        updatedAt: Date;
+        id: number;
+        title: string;
+        requirements: string;
+        benefits: string | null;
+        jobType: string;
+        workplaceType: string;
+        category: string;
+        stipendMin: number;
+        stipendMax: number;
+        region: string | null;
+        applicationDeadline: Date;
+        status: string;
+        contactEmail: string;
+        applyUrl: string | null;
+        companyId: number;
+    }>;
+    getStats(): Promise<{
+        totalJobs: number;
+        openJobs: number;
+        totalCompanies: number;
+        internshipCount: number;
+    }>;
+}

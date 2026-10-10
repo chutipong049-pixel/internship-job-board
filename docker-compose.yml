@@ -1,0 +1,50 @@
+services:
+  # 1. Database (PostgreSQL 16)
+  postgres:
+    image: postgres:16-alpine
+    container_name: jobboard-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jobboard_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d jobboard_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 2. Backend API (NestJS + Prisma)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jobboard-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/jobboard_db?schema=public"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # 3. Frontend Web App (Angular 18 + Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: jobboard-frontend
+    restart: always
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
