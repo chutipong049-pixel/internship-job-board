@@ -42126,566 +42126,370 @@ var JobService = class _JobService {
 };
 
 // src/app/pages/job-list/job-list.component.ts
-var _forTrack0 = ($index, $item) => $item.id;
-var _c0 = () => [1, 2, 3, 4, 5, 6];
-var _c1 = (a0) => ["/jobs", a0];
-function JobListComponent_Conditional_12_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 8)(1, "div", 41)(2, "span", 42);
-    \u0275\u0275text(3, "\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "p", 43);
-    \u0275\u0275text(5);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(6, "div", 41)(7, "span", 44);
-    \u0275\u0275text(8, "\u0E01\u0E33\u0E25\u0E31\u0E07\u0E40\u0E1B\u0E34\u0E14\u0E23\u0E31\u0E1A");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(9, "p", 45);
-    \u0275\u0275text(10);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(11, "div", 41)(12, "span", 46);
-    \u0275\u0275text(13, "\u0E17\u0E35\u0E48\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19 (Intern)");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "p", 47);
-    \u0275\u0275text(15);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(16, "div", 41)(17, "span", 42);
-    \u0275\u0275text(18, "\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17\u0E1E\u0E32\u0E23\u0E4C\u0E17\u0E40\u0E19\u0E2D\u0E23\u0E4C");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(19, "p", 43);
-    \u0275\u0275text(20);
-    \u0275\u0275elementEnd()()();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1("", ctx_r0.stats.totalJobs, " \u0E07\u0E32\u0E19");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1("", ctx_r0.stats.openJobs, " \u0E07\u0E32\u0E19");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1("", ctx_r0.stats.internshipCount, " \u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1("", ctx_r0.stats.totalCompanies, " \u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17");
-  }
-}
-function JobListComponent_Conditional_79_Template(rf, ctx) {
+function JobListComponent_ng_container_15_Template(rf, ctx) {
   if (rf & 1) {
     const _r2 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 48);
-    \u0275\u0275listener("click", function JobListComponent_Conditional_79_Template_button_click_0_listener() {
+    \u0275\u0275elementContainerStart(0);
+    \u0275\u0275elementStart(1, "div", 47)(2, "span", 48);
+    \u0275\u0275text(3, "\u0E22\u0E34\u0E19\u0E14\u0E35\u0E15\u0E49\u0E2D\u0E19\u0E23\u0E31\u0E1A, ");
+    \u0275\u0275elementStart(4, "strong", 49);
+    \u0275\u0275text(5);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(6, "button", 50);
+    \u0275\u0275listener("click", function JobListComponent_ng_container_15_Template_button_click_6_listener() {
       \u0275\u0275restoreView(_r2);
-      const ctx_r0 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r0.resetFilters());
+      const ctx_r2 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r2.logout());
     });
-    \u0275\u0275text(1, " \u0E25\u0E49\u0E32\u0E07\u0E15\u0E31\u0E27\u0E01\u0E23\u0E2D\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 (Reset Filters) ");
-    \u0275\u0275elementEnd();
-  }
-}
-function JobListComponent_Conditional_80_For_9_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 54)(1, "div", 55);
-    \u0275\u0275element(2, "div", 56);
-    \u0275\u0275elementStart(3, "div", 57);
-    \u0275\u0275element(4, "div", 58)(5, "div", 59);
+    \u0275\u0275text(7, "\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A");
     \u0275\u0275elementEnd()();
-    \u0275\u0275element(6, "div", 60)(7, "div", 61);
-    \u0275\u0275elementStart(8, "div", 62);
-    \u0275\u0275element(9, "div", 63)(10, "div", 64);
-    \u0275\u0275elementEnd()();
-  }
-}
-function JobListComponent_Conditional_80_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 37)(1, "div", 49);
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 50);
-    \u0275\u0275element(3, "circle", 51)(4, "path", 52);
-    \u0275\u0275elementEnd();
-    \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(5, "span", 53);
-    \u0275\u0275text(6, "\u0E01\u0E33\u0E25\u0E31\u0E07\u0E42\u0E2B\u0E25\u0E14\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19...");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(7, "div", 40);
-    \u0275\u0275repeaterCreate(8, JobListComponent_Conditional_80_For_9_Template, 11, 0, "div", 54, \u0275\u0275repeaterTrackByIdentity);
-    \u0275\u0275elementEnd()();
+    \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
-    \u0275\u0275advance(8);
-    \u0275\u0275repeater(\u0275\u0275pureFunction0(0, _c0));
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275advance(5);
+    \u0275\u0275textInterpolate(ctx_r2.currentUser.name || ctx_r2.currentUser.email || ctx_r2.currentUser);
   }
 }
-function JobListComponent_Conditional_81_Template(rf, ctx) {
+function JobListComponent_ng_template_16_Template(rf, ctx) {
   if (rf & 1) {
-    const _r3 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 38)(1, "div", 65);
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 66);
-    \u0275\u0275element(3, "path", 67);
+    \u0275\u0275elementStart(0, "div", 51)(1, "a", 52);
+    \u0275\u0275text(2, "\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "a", 53);
+    \u0275\u0275text(4, "\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01");
     \u0275\u0275elementEnd()();
-    \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(4, "h3", 68);
-    \u0275\u0275text(5, "\u0E44\u0E21\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E42\u0E2B\u0E25\u0E14\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E44\u0E14\u0E49");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "p", 69);
-    \u0275\u0275text(7);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "button", 70);
-    \u0275\u0275listener("click", function JobListComponent_Conditional_81_Template_button_click_8_listener() {
-      \u0275\u0275restoreView(_r3);
-      const ctx_r0 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r0.loadJobs());
-    });
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(9, "svg", 71);
-    \u0275\u0275element(10, "path", 72);
-    \u0275\u0275elementEnd();
-    \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(11, "span");
-    \u0275\u0275text(12, "\u0E25\u0E2D\u0E07\u0E43\u0E2B\u0E21\u0E48\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07 (Retry)");
-    \u0275\u0275elementEnd()()();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance(7);
-    \u0275\u0275textInterpolate(ctx_r0.errorMessage);
   }
 }
-function JobListComponent_Conditional_82_Conditional_9_Template(rf, ctx) {
+function JobListComponent_div_90_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 81);
-    \u0275\u0275listener("click", function JobListComponent_Conditional_82_Conditional_9_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r4);
-      const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.resetFilters());
+    \u0275\u0275elementStart(0, "div", 54)(1, "div", 55);
+    \u0275\u0275element(2, "img", 56);
+    \u0275\u0275elementStart(3, "div", 57)(4, "div", 58)(5, "h3", 59);
+    \u0275\u0275listener("click", function JobListComponent_div_90_Template_h3_click_5_listener() {
+      const job_r5 = \u0275\u0275restoreView(_r4).$implicit;
+      const ctx_r2 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r2.viewDetail(job_r5.id));
     });
-    \u0275\u0275text(1, " \u0E25\u0E49\u0E32\u0E07\u0E15\u0E31\u0E27\u0E01\u0E23\u0E2D\u0E07 ");
+    \u0275\u0275text(6);
     \u0275\u0275elementEnd();
-  }
-}
-function JobListComponent_Conditional_82_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 39)(1, "div", 73);
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 74);
-    \u0275\u0275element(3, "path", 75);
+    \u0275\u0275elementStart(7, "span", 60);
+    \u0275\u0275text(8);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(9, "span", 61);
+    \u0275\u0275text(10, " \u{1F525} \u0E41\u0E19\u0E30\u0E19\u0E33 ");
     \u0275\u0275elementEnd()();
-    \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(4, "h3", 76);
-    \u0275\u0275text(5, "\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E43\u0E19\u0E23\u0E30\u0E1A\u0E1A");
+    \u0275\u0275elementStart(11, "div", 62)(12, "span", 63);
+    \u0275\u0275text(13);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "p", 77);
-    \u0275\u0275text(7, " \u0E44\u0E21\u0E48\u0E1E\u0E1A\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E15\u0E23\u0E07\u0E15\u0E32\u0E21\u0E40\u0E07\u0E37\u0E48\u0E2D\u0E19\u0E44\u0E02\u0E01\u0E32\u0E23\u0E04\u0E49\u0E19\u0E2B\u0E32 \u0E04\u0E38\u0E13\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E25\u0E49\u0E32\u0E07\u0E15\u0E31\u0E27\u0E01\u0E23\u0E2D\u0E07\u0E2B\u0E23\u0E37\u0E2D\u0E25\u0E07\u0E1B\u0E23\u0E30\u0E01\u0E32\u0E28\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\u0E44\u0E14\u0E49\u0E17\u0E31\u0E19\u0E17\u0E35 ");
+    \u0275\u0275elementStart(14, "span");
+    \u0275\u0275text(15, "\u2022");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "div", 78);
-    \u0275\u0275template(9, JobListComponent_Conditional_82_Conditional_9_Template, 2, 0, "button", 79);
-    \u0275\u0275elementStart(10, "a", 80);
-    \u0275\u0275text(11, " + \u0E25\u0E07\u0E1B\u0E23\u0E30\u0E01\u0E32\u0E28\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48 ");
-    \u0275\u0275elementEnd()()();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance(9);
-    \u0275\u0275conditional(ctx_r0.hasActiveFilters() ? 9 : -1);
-  }
-}
-function JobListComponent_Conditional_83_For_2_Conditional_13_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 91);
-    \u0275\u0275text(1, " \u0E1B\u0E34\u0E14\u0E23\u0E31\u0E1A\u0E2A\u0E21\u0E31\u0E04\u0E23 ");
-    \u0275\u0275elementEnd();
-  }
-}
-function JobListComponent_Conditional_83_For_2_Conditional_14_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 92);
-    \u0275\u0275element(1, "span", 106);
-    \u0275\u0275text(2, " \u0E40\u0E1B\u0E34\u0E14\u0E23\u0E31\u0E1A ");
-    \u0275\u0275elementEnd();
-  }
-}
-function JobListComponent_Conditional_83_For_2_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 82)(1, "div", 83)(2, "div", 84)(3, "div", 55);
-    \u0275\u0275element(4, "img", 85);
-    \u0275\u0275elementStart(5, "div")(6, "h4", 86);
-    \u0275\u0275text(7);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "span", 87);
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(9, "svg", 88);
-    \u0275\u0275element(10, "path", 89)(11, "path", 90);
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(12);
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275template(13, JobListComponent_Conditional_83_For_2_Conditional_13_Template, 2, 0, "span", 91)(14, JobListComponent_Conditional_83_For_2_Conditional_14_Template, 3, 0, "span", 92);
-    \u0275\u0275elementEnd();
-    \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(15, "h3", 93)(16, "a", 94);
+    \u0275\u0275elementStart(16, "span", 64);
     \u0275\u0275text(17);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(18, "span");
+    \u0275\u0275text(19, "\u2022");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(20, "span", 64);
+    \u0275\u0275text(21);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(18, "p", 95);
-    \u0275\u0275text(19);
+    \u0275\u0275elementStart(22, "p", 65);
+    \u0275\u0275text(23);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "div", 96)(21, "span", 97);
-    \u0275\u0275text(22);
+    \u0275\u0275elementStart(24, "div", 66)(25, "span");
+    \u0275\u0275text(26, "\u{1F4B0}");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(23, "span", 98);
-    \u0275\u0275text(24);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(25, "span", 99);
-    \u0275\u0275text(26);
+    \u0275\u0275text(27);
+    \u0275\u0275pipe(28, "number");
+    \u0275\u0275pipe(29, "number");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(27, "div", 100)(28, "div")(29, "span", 101);
-    \u0275\u0275text(30, "\u0E40\u0E1A\u0E35\u0E49\u0E22\u0E40\u0E25\u0E35\u0E49\u0E22\u0E07 / \u0E40\u0E07\u0E34\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E19");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(31, "span", 102);
+    \u0275\u0275elementStart(30, "div", 67)(31, "span", 21);
     \u0275\u0275text(32);
-    \u0275\u0275pipe(33, "number");
-    \u0275\u0275pipe(34, "number");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(35, "a", 103)(36, "span");
-    \u0275\u0275text(37, "\u0E14\u0E39\u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14");
+    \u0275\u0275pipe(33, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(38, "svg", 104);
-    \u0275\u0275element(39, "path", 105);
+    \u0275\u0275elementStart(34, "div", 51)(35, "button", 68);
+    \u0275\u0275listener("click", function JobListComponent_div_90_Template_button_click_35_listener() {
+      const job_r5 = \u0275\u0275restoreView(_r4).$implicit;
+      const ctx_r2 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r2.viewDetail(job_r5.id));
+    });
+    \u0275\u0275elementStart(36, "span");
+    \u0275\u0275text(37, "\u{1F525}");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(38, " \u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14\u0E07\u0E32\u0E19 ");
     \u0275\u0275elementEnd()()()();
   }
   if (rf & 2) {
     const job_r5 = ctx.$implicit;
-    const ctx_r0 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance(2);
+    \u0275\u0275property("src", job_r5.companyLogo, \u0275\u0275sanitizeUrl);
     \u0275\u0275advance(4);
-    \u0275\u0275property("src", (job_r5.company == null ? null : job_r5.company.logo) || "https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=128&auto=format&fit=crop&q=80", \u0275\u0275sanitizeUrl)("alt", job_r5.company == null ? null : job_r5.company.name);
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", job_r5.company == null ? null : job_r5.company.name, " ");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1(" ", job_r5.location, " ");
-    \u0275\u0275advance();
-    \u0275\u0275conditional(job_r5.status === "CLOSED" || ctx_r0.isPastDeadline(job_r5.applicationDeadline) ? 13 : 14);
-    \u0275\u0275advance(3);
-    \u0275\u0275property("routerLink", \u0275\u0275pureFunction1(20, _c1, job_r5.id));
-    \u0275\u0275advance();
     \u0275\u0275textInterpolate(job_r5.title);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", job_r5.description, " ");
+    \u0275\u0275textInterpolate1(" ", job_r5.jobType, " ");
+    \u0275\u0275advance(5);
+    \u0275\u0275textInterpolate((job_r5.company == null ? null : job_r5.company.name) || "\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17\u0E0A\u0E31\u0E49\u0E19\u0E19\u0E33");
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate1("\u{1F4CD} ", job_r5.location || "\u0E01\u0E23\u0E38\u0E07\u0E40\u0E17\u0E1E\u0E21\u0E2B\u0E32\u0E19\u0E04\u0E23", "");
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate1("\u{1F4BB} ", job_r5.workplaceType, "");
     \u0275\u0275advance(2);
-    \u0275\u0275classMap(job_r5.jobType === "INTERNSHIP" ? "bg-amber-50 text-amber-700 border-amber-200" : "bg-indigo-50 text-indigo-700 border-indigo-200");
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", ctx_r0.formatJobType(job_r5.jobType), " ");
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", ctx_r0.formatWorkplace(job_r5.workplaceType), " ");
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", job_r5.category, " ");
-    \u0275\u0275advance(6);
-    \u0275\u0275textInterpolate2(" \u0E3F", \u0275\u0275pipeBind1(33, 16, job_r5.stipendMin), " - \u0E3F", \u0275\u0275pipeBind1(34, 18, job_r5.stipendMax), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275property("routerLink", \u0275\u0275pureFunction1(22, _c1, job_r5.id));
-  }
-}
-function JobListComponent_Conditional_83_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 40);
-    \u0275\u0275repeaterCreate(1, JobListComponent_Conditional_83_For_2_Template, 40, 24, "div", 82, _forTrack0);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance();
-    \u0275\u0275repeater(ctx_r0.jobs);
+    \u0275\u0275textInterpolate(job_r5.description);
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate2(" \u0E04\u0E48\u0E32\u0E15\u0E2D\u0E1A\u0E41\u0E17\u0E19: \u0E3F", \u0275\u0275pipeBind1(28, 10, job_r5.stipendMin), " - \u0E3F", \u0275\u0275pipeBind1(29, 12, job_r5.stipendMax), " ");
+    \u0275\u0275advance(5);
+    \u0275\u0275textInterpolate1("\u0E42\u0E1E\u0E2A\u0E15\u0E4C\u0E40\u0E21\u0E37\u0E48\u0E2D: ", \u0275\u0275pipeBind2(33, 14, job_r5.createdAt, "dd/MM/yyyy"), "");
   }
 }
 var JobListComponent = class _JobListComponent {
-  constructor(jobService, route, router) {
-    this.jobService = jobService;
+  constructor(route, router, jobService) {
     this.route = route;
     this.router = router;
+    this.jobService = jobService;
+    this.currentUser = null;
     this.jobs = [];
-    this.stats = null;
-    this.isLoading = true;
-    this.hasError = false;
-    this.errorMessage = "";
+    this.filteredJobs = [];
     this.searchKeyword = "";
-    this.selectedCategory = "ALL";
     this.selectedJobType = "ALL";
-    this.selectedWorkplaceType = "ALL";
-    this.selectedStatus = "OPEN";
+    this.selectedWorkplacetype = "ALL";
+    this.selectedRegion = "ALL";
   }
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      if (params["jobType"]) {
-        this.selectedJobType = params["jobType"];
+    const userStr = localStorage.getItem("currentUser") || localStorage.getItem("user");
+    if (userStr) {
+      try {
+        this.currentUser = JSON.parse(userStr);
+      } catch (e) {
+        this.currentUser = userStr;
       }
-      if (params["category"]) {
-        this.selectedCategory = params["category"];
-      }
-      this.loadJobs();
-      this.loadStats();
-    });
-  }
-  loadJobs() {
-    this.isLoading = true;
-    this.hasError = false;
-    this.errorMessage = "";
-    const filterParams = {
-      search: this.searchKeyword,
-      category: this.selectedCategory,
-      jobType: this.selectedJobType,
-      workplaceType: this.selectedWorkplaceType,
-      status: this.selectedStatus
-    };
-    this.jobService.getJobs(filterParams).subscribe({
+    }
+    this.jobService.getJobs().subscribe({
       next: (data) => {
-        this.jobs = data;
-        this.isLoading = false;
+        this.jobs = data.map((job) => {
+          const compName = (job.company?.name || "").toUpperCase();
+          let logoFile = "logo.png";
+          if (compName.includes("SCG")) {
+            logoFile = "scg.png";
+          } else if (compName.includes("INTEL")) {
+            logoFile = "intel.png";
+          } else if (compName.includes("MICROSOFT")) {
+            logoFile = "microsoft.png";
+          } else if (compName.includes("SHOPEE")) {
+            logoFile = "shopee.png";
+          } else if (compName.includes("GOOGLE")) {
+            logoFile = "google.png";
+          }
+          return __spreadProps(__spreadValues({}, job), {
+            companyLogo: `assets/${logoFile}`
+          });
+        });
+        this.filteredJobs = this.jobs;
       },
       error: (err) => {
-        console.error("Failed to load jobs:", err);
-        this.hasError = true;
-        this.errorMessage = "\u0E44\u0E21\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E40\u0E0A\u0E37\u0E48\u0E2D\u0E21\u0E15\u0E48\u0E2D\u0E01\u0E31\u0E1A Backend API \u0E44\u0E14\u0E49 \u0E01\u0E23\u0E38\u0E13\u0E32\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E27\u0E48\u0E32 NestJS \u0E17\u0E33\u0E07\u0E32\u0E19\u0E2D\u0E22\u0E39\u0E48\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48";
-        this.isLoading = false;
+        console.error("Error fetching jobs:", err);
       }
     });
   }
-  loadStats() {
-    this.jobService.getStats().subscribe({
-      next: (stats) => {
-        this.stats = stats;
-      },
-      error: (err) => {
-        console.warn("Could not load stats", err);
-      }
+  filterJobs() {
+    this.filteredJobs = this.jobs.filter((job) => {
+      const matchKeyword = !this.searchKeyword || job.title.toLowerCase().includes(this.searchKeyword.toLowerCase()) || job.company?.name && job.company.name.toLowerCase().includes(this.searchKeyword.toLowerCase());
+      const matchJobType = this.selectedJobType === "ALL" || job.jobType === this.selectedJobType;
+      const matchWorkplace = this.selectedWorkplacetype === "ALL" || job.workplaceType === this.selectedWorkplacetype;
+      const matchRegion = this.selectedRegion === "ALL" || job.region === this.selectedRegion;
+      return matchKeyword && matchJobType && matchWorkplace && matchRegion;
     });
-  }
-  onSearchChange() {
-    clearTimeout(this.searchDebounceTimeout);
-    this.searchDebounceTimeout = setTimeout(() => {
-      this.loadJobs();
-    }, 400);
-  }
-  applyFilters() {
-    this.loadJobs();
   }
   resetFilters() {
     this.searchKeyword = "";
-    this.selectedCategory = "ALL";
     this.selectedJobType = "ALL";
-    this.selectedWorkplaceType = "ALL";
-    this.selectedStatus = "ALL";
-    this.loadJobs();
+    this.selectedWorkplacetype = "ALL";
+    this.selectedRegion = "ALL";
+    this.filteredJobs = this.jobs;
   }
-  hasActiveFilters() {
-    return this.searchKeyword.trim() !== "" || this.selectedCategory !== "ALL" || this.selectedJobType !== "ALL" || this.selectedWorkplaceType !== "ALL" || this.selectedStatus !== "ALL";
+  viewDetail(id) {
+    this.router.navigate(["/jobs", id]);
   }
-  isPastDeadline(deadlineStr) {
-    if (!deadlineStr)
-      return false;
-    return new Date(deadlineStr) < /* @__PURE__ */ new Date();
-  }
-  formatJobType(type) {
-    switch (type) {
-      case "INTERNSHIP":
-        return "\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19";
-      case "FULL_TIME":
-        return "\u0E07\u0E32\u0E19\u0E1B\u0E23\u0E30\u0E08\u0E33";
-      case "PART_TIME":
-        return "\u0E1E\u0E32\u0E23\u0E4C\u0E17\u0E44\u0E17\u0E21\u0E4C";
-      default:
-        return type;
-    }
-  }
-  formatWorkplace(type) {
-    switch (type) {
-      case "REMOTE":
-        return "Remote 100%";
-      case "HYBRID":
-        return "Hybrid Work";
-      case "ON_SITE":
-        return "On-Site";
-      default:
-        return type;
-    }
+  logout() {
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("user");
+    this.currentUser = null;
+    this.router.navigate(["/login"]);
   }
   static {
     this.\u0275fac = function JobListComponent_Factory(__ngFactoryType__) {
-      return new (__ngFactoryType__ || _JobListComponent)(\u0275\u0275directiveInject(JobService), \u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(Router));
+      return new (__ngFactoryType__ || _JobListComponent)(\u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(JobService));
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _JobListComponent, selectors: [["app-job-list"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 84, vars: 9, consts: [[1, "min-h-screen", "bg-slate-50/60", "pb-16"], [1, "bg-gradient-to-br", "from-indigo-900", "via-indigo-800", "to-slate-900", "text-white", "py-14", "px-4", "sm:px-6", "lg:px-8", "relative", "overflow-hidden"], [1, "absolute", "inset-0", "bg-[radial-gradient(#818cf8_1px,transparent_1px)]", "[background-size:16px_16px]", "opacity-15"], [1, "max-w-6xl", "mx-auto", "relative", "z-10", "text-center"], [1, "inline-flex", "items-center", "gap-2", "px-3.5", "py-1.5", "rounded-full", "text-xs", "font-semibold", "bg-indigo-500/20", "text-indigo-200", "border", "border-indigo-400/30", "mb-4", "backdrop-blur-sm"], [1, "text-3xl", "sm:text-5xl", "font-extrabold", "tracking-tight", "mb-4"], [1, "bg-gradient-to-r", "from-indigo-300", "via-purple-200", "to-pink-300", "bg-clip-text", "text-transparent"], [1, "text-slate-300", "max-w-2xl", "mx-auto", "text-sm", "sm:text-base", "mb-8"], [1, "grid", "grid-cols-2", "sm:grid-cols-4", "gap-3", "max-w-3xl", "mx-auto", "text-left"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8", "-mt-6"], [1, "bg-white", "rounded-2xl", "shadow-lg", "shadow-slate-200/60", "border", "border-slate-200/80", "p-4", "sm:p-6", "mb-8"], [1, "relative", "mb-4"], [1, "absolute", "inset-y-0", "left-0", "pl-4", "flex", "items-center", "pointer-events-none", "text-slate-400"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-5", "h-5"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"], ["type", "text", "placeholder", "\u0E04\u0E49\u0E19\u0E2B\u0E32\u0E15\u0E32\u0E21\u0E0A\u0E37\u0E48\u0E2D\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19, \u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17, \u0E04\u0E35\u0E22\u0E4C\u0E40\u0E27\u0E34\u0E23\u0E4C\u0E14 \u0E2B\u0E23\u0E37\u0E2D\u0E2A\u0E16\u0E32\u0E19\u0E17\u0E35\u0E48...", 1, "w-full", "pl-12", "pr-28", "py-3.5", "bg-slate-50", "border", "border-slate-200", "rounded-xl", "text-slate-900", "placeholder-slate-400", "text-sm", "focus:outline-none", "focus:ring-2", "focus:ring-indigo-500", "focus:bg-white", "transition-all", 3, "ngModelChange", "ngModel"], [1, "absolute", "right-2", "top-2", "bottom-2", "px-5", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "text-xs", "font-semibold", "rounded-lg", "shadow-sm", "transition-colors", "flex", "items-center", "gap-1.5", 3, "click"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "lg:grid-cols-4", "gap-3", "pt-2", "border-t", "border-slate-100"], [1, "block", "text-xs", "font-semibold", "text-slate-600", "mb-1.5"], [1, "w-full", "py-2.5", "px-3", "bg-slate-50", "border", "border-slate-200", "rounded-lg", "text-xs", "font-medium", "text-slate-700", "focus:outline-none", "focus:ring-2", "focus:ring-indigo-500", "focus:bg-white", 3, "ngModelChange", "change", "ngModel"], ["value", "ALL"], ["value", "Software Engineering"], ["value", "Data & AI"], ["value", "Design"], ["value", "Marketing"], ["value", "Business"], ["value", "INTERNSHIP"], ["value", "FULL_TIME"], ["value", "PART_TIME"], ["value", "REMOTE"], ["value", "HYBRID"], ["value", "ON_SITE"], ["value", "OPEN"], ["value", "CLOSED"], [1, "mt-3", "flex", "items-center", "justify-between", "text-xs", "text-slate-500"], [1, "text-indigo-600", "font-semibold"], [1, "text-indigo-600", "hover:text-indigo-800", "font-medium", "underline", "flex", "items-center", "gap-1"], [1, "space-y-4"], [1, "bg-red-50", "border", "border-red-200", "rounded-2xl", "p-8", "text-center", "max-w-lg", "mx-auto", "my-12"], [1, "bg-white", "border", "border-slate-200", "rounded-2xl", "p-12", "text-center", "max-w-md", "mx-auto", "my-12"], [1, "grid", "grid-cols-1", "md:grid-cols-2", "lg:grid-cols-3", "gap-6"], [1, "bg-white/10", "backdrop-blur-md", "rounded-xl", "p-3", "border", "border-white/10"], [1, "text-xs", "text-indigo-200", "font-medium"], [1, "text-xl", "sm:text-2xl", "font-bold"], [1, "text-xs", "text-emerald-300", "font-medium"], [1, "text-xl", "sm:text-2xl", "font-bold", "text-emerald-400"], [1, "text-xs", "text-amber-300", "font-medium"], [1, "text-xl", "sm:text-2xl", "font-bold", "text-amber-300"], [1, "text-indigo-600", "hover:text-indigo-800", "font-medium", "underline", "flex", "items-center", "gap-1", 3, "click"], [1, "flex", "items-center", "justify-center", "gap-3", "py-6", "text-slate-500"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", 1, "animate-spin", "h-5", "w-5", "text-indigo-600"], ["cx", "12", "cy", "12", "r", "10", "stroke", "currentColor", "stroke-width", "4", 1, "opacity-25"], ["fill", "currentColor", "d", "M4 12a8 8 0 018-8v8H4z", 1, "opacity-75"], [1, "text-sm", "font-medium"], [1, "bg-white", "rounded-2xl", "p-6", "border", "border-slate-200", "animate-shimmer", "space-y-4"], [1, "flex", "items-center", "gap-3"], [1, "w-12", "h-12", "rounded-xl", "bg-slate-200"], [1, "space-y-2", "flex-1"], [1, "h-4", "bg-slate-200", "rounded", "w-3/4"], [1, "h-3", "bg-slate-200", "rounded", "w-1/2"], [1, "h-3", "bg-slate-200", "rounded", "w-full"], [1, "h-3", "bg-slate-200", "rounded", "w-5/6"], [1, "pt-4", "border-t", "border-slate-100", "flex", "justify-between"], [1, "h-4", "bg-slate-200", "rounded", "w-1/3"], [1, "h-8", "bg-slate-200", "rounded", "w-20"], [1, "w-12", "h-12", "rounded-full", "bg-red-100", "text-red-600", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-6", "h-6"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], [1, "text-base", "font-bold", "text-red-900", "mb-1"], [1, "text-sm", "text-red-700", "mb-6"], [1, "inline-flex", "items-center", "gap-2", "px-5", "py-2.5", "bg-red-600", "hover:bg-red-700", "text-white", "text-sm", "font-semibold", "rounded-xl", "shadow-sm", "transition-colors", 3, "click"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-4", "h-4"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"], [1, "w-16", "h-16", "rounded-2xl", "bg-indigo-50", "text-indigo-600", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-8", "h-8"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "1.5", "d", "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"], [1, "text-lg", "font-bold", "text-slate-800", "mb-1"], [1, "text-sm", "text-slate-500", "mb-6"], [1, "flex", "items-center", "justify-center", "gap-3"], [1, "px-4", "py-2", "border", "border-slate-300", "text-slate-700", "text-xs", "font-medium", "rounded-xl", "hover:bg-slate-50", "transition-colors"], ["routerLink", "/jobs/new", 1, "px-5", "py-2", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "text-xs", "font-semibold", "rounded-xl", "shadow-sm", "transition-colors"], [1, "px-4", "py-2", "border", "border-slate-300", "text-slate-700", "text-xs", "font-medium", "rounded-xl", "hover:bg-slate-50", "transition-colors", 3, "click"], [1, "bg-white", "rounded-2xl", "border", "border-slate-200/90", "hover:border-indigo-300", "hover:shadow-xl", "hover:shadow-indigo-500/10", "transition-all", "duration-300", "flex", "flex-col", "overflow-hidden", "group"], [1, "p-6", "flex-1"], [1, "flex", "items-start", "justify-between", "gap-3", "mb-4"], [1, "w-12", "h-12", "rounded-xl", "object-cover", "border", "border-slate-100", "shadow-sm", 3, "src", "alt"], [1, "text-xs", "font-semibold", "text-slate-600", "line-clamp-1"], [1, "text-xs", "text-slate-400", "flex", "items-center", "gap-1", "mt-0.5"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-3", "h-3"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M15 11a3 3 0 11-6 0 3 3 0 016 0z"], [1, "px-2.5", "py-1", "rounded-full", "text-[11px]", "font-bold", "bg-red-50", "text-red-600", "border", "border-red-200/60"], [1, "px-2.5", "py-1", "rounded-full", "text-[11px]", "font-bold", "bg-emerald-50", "text-emerald-600", "border", "border-emerald-200/60", "flex", "items-center", "gap-1"], [1, "text-base", "font-bold", "text-slate-900", "group-hover:text-indigo-600", "transition-colors", "line-clamp-2", "mb-2"], [3, "routerLink"], [1, "text-xs", "text-slate-500", "line-clamp-2", "mb-4"], [1, "flex", "flex-wrap", "gap-1.5", "mb-4"], [1, "px-2", "py-0.5", "rounded-md", "text-[11px]", "font-semibold", "border"], [1, "px-2", "py-0.5", "rounded-md", "text-[11px]", "font-medium", "bg-slate-100", "text-slate-600", "border", "border-slate-200"], [1, "px-2", "py-0.5", "rounded-md", "text-[11px]", "font-medium", "bg-purple-50", "text-purple-700", "border", "border-purple-200"], [1, "px-6", "py-3.5", "bg-slate-50/80", "border-t", "border-slate-100", "flex", "items-center", "justify-between", "mt-auto"], [1, "text-[11px]", "text-slate-400", "block"], [1, "text-xs", "font-bold", "text-indigo-700"], [1, "inline-flex", "items-center", "gap-1", "px-3.5", "py-1.5", "text-xs", "font-semibold", "text-indigo-600", "hover:text-white", "bg-indigo-50", "hover:bg-indigo-600", "rounded-lg", "transition-colors", 3, "routerLink"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-3.5", "h-3.5"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M9 5l7 7-7 7"], [1, "w-1.5", "h-1.5", "rounded-full", "bg-emerald-500", "animate-pulse"]], template: function JobListComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _JobListComponent, selectors: [["app-job-list"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 91, vars: 8, consts: [["loginTemplate", ""], [1, "min-h-screen", "bg-[#FFFBF7]", "font-sans", "text-gray-800"], [1, "bg-white", "border-b", "border-orange-100", "sticky", "top-0", "z-50", "shadow-xs"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8"], [1, "flex", "justify-between", "h-16", "items-center"], [1, "flex", "items-center", "space-x-8"], ["routerLink", "/jobs", 1, "flex", "items-center", "gap-2", "cursor-pointer"], ["src", "assets/logo.png", "alt", "JobBoard Logo", "onError", "this.src='https://images.unsplash.com/photo-1549923746-c502d4883ea?w=128&auto=format&fit=crop&q=80'", 1, "h-10", "object-contain"], [1, "hidden", "md:flex", "space-x-6", "text-sm", "font-medium", "text-gray-600", "items-center"], ["routerLink", "/jobs", 1, "text-orange-600", "font-semibold", "border-b-2", "border-orange-600", "pb-1"], ["routerLink", "/jobs/new", 1, "bg-orange-500", "hover:bg-orange-600", "text-white", "px-3.5", "py-1.5", "rounded-xl", "text-xs", "font-semibold", "shadow-xs", "transition", "flex", "items-center", "gap-1.5", "cursor-pointer"], [1, "flex", "items-center", "space-x-4"], [4, "ngIf", "ngIfElse"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8", "pt-8", "pb-4"], [1, "relative", "rounded-3xl", "overflow-hidden", "border", "border-orange-100/60", "shadow-sm", "flex", "flex-col", "md:flex-row", "justify-between", "items-start", "md:items-center", "p-8", "bg-cover", "bg-center", 2, "background-image", "linear-gradient(to right, rgba(255, 255, 255, 0.92), rgba(255, 245, 235, 0.85)), url('assets/banner-bg.png')"], [1, "z-10", "max-w-lg"], [1, "text-3xl", "font-extrabold", "text-gray-900", "mb-2", "flex", "items-center", "gap-2"], [1, "text-sm", "text-gray-600"], [1, "mt-4", "md:mt-0", "bg-white/90", "backdrop-blur-xs", "px-5", "py-3", "rounded-2xl", "border", "border-orange-100", "shadow-xs", "flex", "items-center", "gap-3", "z-10"], [1, "text-2xl"], [1, "text-xs", "font-bold", "text-orange-600"], [1, "text-[11px]", "text-gray-400"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8", "pb-16"], [1, "grid", "grid-cols-1", "lg:grid-cols-4", "gap-8"], [1, "lg:col-span-1", "bg-white", "p-6", "rounded-3xl", "shadow-xs", "border", "border-orange-100/80", "h-fit", "space-y-5"], [1, "flex", "items-center", "justify-between", "pb-3", "border-b", "border-gray-100"], [1, "font-bold", "text-gray-800", "text-sm", "flex", "items-center", "gap-2"], [1, "text-orange-500"], [1, "block", "text-xs", "font-semibold", "text-gray-600", "mb-1.5"], ["type", "text", "placeholder", "\u0E0A\u0E37\u0E48\u0E2D\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07, \u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17...", 1, "w-full", "text-xs", "border", "border-gray-200", "rounded-xl", "px-3", "py-2.5", "focus:outline-none", "focus:ring-2", "focus:ring-orange-400", "bg-gray-50/50", 3, "ngModelChange", "input", "ngModel"], [1, "w-full", "text-xs", "border", "border-gray-200", "rounded-xl", "px-3", "py-2.5", "focus:outline-none", "focus:ring-2", "focus:ring-orange-400", "bg-gray-50/50", "text-gray-700", 3, "ngModelChange", "change", "ngModel"], ["value", "ALL"], ["value", "FULL_TIME"], ["value", "INTERNSHIP"], ["value", "PART_TIME"], ["value", "HYBRID"], ["value", "ON_SITE"], ["value", "REMOTE"], ["value", "CENTRAL"], ["value", "NORTH"], ["value", "SOUTH"], [1, "text-center", "pt-2"], [1, "text-xs", "text-gray-400", "hover:text-gray-600", "underline", "transition", "cursor-pointer", 3, "click"], [1, "lg:col-span-3", "space-y-4"], [1, "bg-white", "p-4", "rounded-2xl", "shadow-xs", "border", "border-orange-100/80", "flex", "items-center", "justify-between"], [1, "text-xs", "font-semibold", "text-gray-600"], ["class", "bg-white p-6 rounded-3xl shadow-xs border border-orange-100/70 hover:shadow-md transition flex flex-col md:flex-row items-start md:items-center justify-between gap-6", 4, "ngFor", "ngForOf"], [1, "flex", "items-center", "gap-3", "pl-2", "border-l", "border-gray-200"], [1, "text-xs", "text-gray-700", "hidden", "sm:inline"], [1, "text-gray-900"], [1, "border", "border-red-400", "text-red-500", "hover:bg-red-50", "px-3", "py-1", "rounded-lg", "text-xs", "transition", "font-medium", "cursor-pointer", 3, "click"], [1, "flex", "items-center", "gap-2"], ["routerLink", "/login", 1, "text-orange-600", "hover:bg-orange-50", "px-3", "py-2", "rounded-xl", "text-xs", "font-semibold", "transition"], ["routerLink", "/register", 1, "bg-orange-500", "hover:bg-orange-600", "text-white", "px-4", "py-2", "rounded-xl", "text-xs", "font-semibold", "shadow-xs", "transition", "cursor-pointer"], [1, "bg-white", "p-6", "rounded-3xl", "shadow-xs", "border", "border-orange-100/70", "hover:shadow-md", "transition", "flex", "flex-col", "md:flex-row", "items-start", "md:items-center", "justify-between", "gap-6"], [1, "flex", "items-start", "gap-4", "flex-1"], ["alt", "Company Logo", "onError", "this.src='https://images.unsplash.com/photo-1549923746-c502d4883ea?w=128&auto=format&fit=crop&q=80'", 1, "w-14", "h-14", "rounded-2xl", "object-contain", "border", "border-gray-100", "shadow-xs", "flex-shrink-0", "bg-gray-50", "p-1", 3, "src"], [1, "space-y-1.5"], [1, "flex", "flex-wrap", "items-center", "gap-2"], [1, "text-base", "font-bold", "text-orange-600", "hover:underline", "cursor-pointer", 3, "click"], [1, "px-2.5", "py-0.5", "text-[11px]", "font-semibold", "bg-orange-50", "text-orange-600", "rounded-full", "border", "border-orange-200"], [1, "px-2", "py-0.5", "text-[10px]", "font-bold", "bg-amber-50", "text-amber-600", "rounded-md", "border", "border-amber-200"], [1, "flex", "flex-wrap", "items-center", "gap-3", "text-xs", "text-gray-500"], [1, "font-bold", "text-gray-800"], [1, "flex", "items-center", "gap-1"], [1, "text-xs", "text-gray-500", "line-clamp-1", "pt-0.5"], [1, "text-xs", "text-emerald-600", "font-bold", "pt-1", "flex", "items-center", "gap-1.5"], [1, "w-full", "md:w-auto", "flex", "md:flex-col", "items-center", "md:items-end", "justify-between", "h-full", "pt-3", "md:pt-0", "border-t", "md:border-t-0", "border-gray-100", "gap-3"], [1, "bg-orange-500", "hover:bg-orange-600", "text-white", "px-5", "py-2.5", "rounded-xl", "font-semibold", "text-xs", "shadow-sm", "shadow-orange-500/20", "transition", "flex", "items-center", "gap-1.5", "cursor-pointer", 3, "click"]], template: function JobListComponent_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275elementStart(0, "div", 0)(1, "section", 1);
-        \u0275\u0275element(2, "div", 2);
-        \u0275\u0275elementStart(3, "div", 3)(4, "span", 4);
-        \u0275\u0275text(5, " \u{1F393} \u0E41\u0E1E\u0E25\u0E15\u0E1F\u0E2D\u0E23\u0E4C\u0E21\u0E04\u0E49\u0E19\u0E2B\u0E32\u0E17\u0E35\u0E48\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19\u0E41\u0E25\u0E30\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19\u0E0A\u0E31\u0E49\u0E19\u0E19\u0E33 ");
+        const _r1 = \u0275\u0275getCurrentView();
+        \u0275\u0275elementStart(0, "div", 1)(1, "nav", 2)(2, "div", 3)(3, "div", 4)(4, "div", 5)(5, "div", 6);
+        \u0275\u0275element(6, "img", 7);
         \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(6, "h1", 5);
-        \u0275\u0275text(7, " \u0E04\u0E49\u0E19\u0E2B\u0E32\u0E42\u0E2D\u0E01\u0E32\u0E2A\u0E41\u0E25\u0E30\u0E40\u0E23\u0E34\u0E48\u0E21\u0E15\u0E49\u0E19 ");
-        \u0275\u0275elementStart(8, "span", 6);
-        \u0275\u0275text(9, "\u0E40\u0E2A\u0E49\u0E19\u0E17\u0E32\u0E07\u0E2D\u0E32\u0E0A\u0E35\u0E1E\u0E43\u0E19\u0E1D\u0E31\u0E19");
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(10, "p", 7);
-        \u0275\u0275text(11, " \u0E23\u0E27\u0E1A\u0E23\u0E27\u0E21\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19\u0E41\u0E25\u0E30\u0E17\u0E35\u0E48\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19\u0E14\u0E49\u0E32\u0E19 IT, Software, Design \u0E41\u0E25\u0E30 Data \u0E08\u0E32\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17\u0E0A\u0E31\u0E49\u0E19\u0E19\u0E33\u0E17\u0E31\u0E48\u0E27\u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28 ");
+        \u0275\u0275elementStart(7, "div", 8)(8, "a", 9);
+        \u0275\u0275text(9, "\u0E2B\u0E32\u0E07\u0E32\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14");
         \u0275\u0275elementEnd();
-        \u0275\u0275template(12, JobListComponent_Conditional_12_Template, 21, 4, "div", 8);
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(13, "main", 9)(14, "div", 10)(15, "div", 11)(16, "div", 12);
-        \u0275\u0275namespaceSVG();
-        \u0275\u0275elementStart(17, "svg", 13);
-        \u0275\u0275element(18, "path", 14);
-        \u0275\u0275elementEnd()();
-        \u0275\u0275namespaceHTML();
-        \u0275\u0275elementStart(19, "input", 15);
-        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_input_ngModelChange_19_listener($event) {
-          \u0275\u0275twoWayBindingSet(ctx.searchKeyword, $event) || (ctx.searchKeyword = $event);
-          return $event;
-        });
-        \u0275\u0275listener("ngModelChange", function JobListComponent_Template_input_ngModelChange_19_listener() {
-          return ctx.onSearchChange();
-        });
+        \u0275\u0275elementStart(10, "a", 10)(11, "span");
+        \u0275\u0275text(12, "\u2795");
         \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(20, "button", 16);
-        \u0275\u0275listener("click", function JobListComponent_Template_button_click_20_listener() {
-          return ctx.loadJobs();
-        });
-        \u0275\u0275text(21, " \u0E04\u0E49\u0E19\u0E2B\u0E32 ");
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(22, "div", 17)(23, "div")(24, "label", 18);
-        \u0275\u0275text(25, "\u0E2A\u0E32\u0E22\u0E07\u0E32\u0E19 (Category)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(26, "select", 19);
-        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_select_ngModelChange_26_listener($event) {
-          \u0275\u0275twoWayBindingSet(ctx.selectedCategory, $event) || (ctx.selectedCategory = $event);
-          return $event;
-        });
-        \u0275\u0275listener("change", function JobListComponent_Template_select_change_26_listener() {
-          return ctx.applyFilters();
-        });
-        \u0275\u0275elementStart(27, "option", 20);
-        \u0275\u0275text(28, "\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 (All Categories)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(29, "option", 21);
-        \u0275\u0275text(30, "Software Engineering");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(31, "option", 22);
-        \u0275\u0275text(32, "Data & AI");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(33, "option", 23);
-        \u0275\u0275text(34, "UI/UX & Design");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(35, "option", 24);
-        \u0275\u0275text(36, "Marketing & Media");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(37, "option", 25);
-        \u0275\u0275text(38, "Business & Management");
+        \u0275\u0275text(13, " \u0E25\u0E07\u0E1B\u0E23\u0E30\u0E01\u0E32\u0E28\u0E07\u0E32\u0E19 ");
         \u0275\u0275elementEnd()()();
-        \u0275\u0275elementStart(39, "div")(40, "label", 18);
-        \u0275\u0275text(41, "\u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E07\u0E32\u0E19 (Job Type)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(42, "select", 19);
-        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_select_ngModelChange_42_listener($event) {
-          \u0275\u0275twoWayBindingSet(ctx.selectedJobType, $event) || (ctx.selectedJobType = $event);
-          return $event;
-        });
-        \u0275\u0275listener("change", function JobListComponent_Template_select_change_42_listener() {
-          return ctx.applyFilters();
-        });
-        \u0275\u0275elementStart(43, "option", 20);
-        \u0275\u0275text(44, "\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 (All Types)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(45, "option", 26);
-        \u0275\u0275text(46, "\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19 (Internship)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(47, "option", 27);
-        \u0275\u0275text(48, "\u0E07\u0E32\u0E19\u0E1B\u0E23\u0E30\u0E08\u0E33 (Full-Time)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(49, "option", 28);
-        \u0275\u0275text(50, "\u0E1E\u0E32\u0E23\u0E4C\u0E17\u0E44\u0E17\u0E21\u0E4C (Part-Time)");
-        \u0275\u0275elementEnd()()();
-        \u0275\u0275elementStart(51, "div")(52, "label", 18);
-        \u0275\u0275text(53, "\u0E23\u0E39\u0E1B\u0E41\u0E1A\u0E1A\u0E07\u0E32\u0E19 (Workplace)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(54, "select", 19);
-        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_select_ngModelChange_54_listener($event) {
-          \u0275\u0275twoWayBindingSet(ctx.selectedWorkplaceType, $event) || (ctx.selectedWorkplaceType = $event);
-          return $event;
-        });
-        \u0275\u0275listener("change", function JobListComponent_Template_select_change_54_listener() {
-          return ctx.applyFilters();
-        });
-        \u0275\u0275elementStart(55, "option", 20);
-        \u0275\u0275text(56, "\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 (All Workplace)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(57, "option", 29);
-        \u0275\u0275text(58, "\u0E17\u0E33\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E1A\u0E49\u0E32\u0E19 (Remote)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(59, "option", 30);
-        \u0275\u0275text(60, "\u0E44\u0E2E\u0E1A\u0E23\u0E34\u0E14 (Hybrid)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(61, "option", 31);
-        \u0275\u0275text(62, "\u0E40\u0E02\u0E49\u0E32\u0E2D\u0E2D\u0E1F\u0E1F\u0E34\u0E28 (On-Site)");
-        \u0275\u0275elementEnd()()();
-        \u0275\u0275elementStart(63, "div")(64, "label", 18);
-        \u0275\u0275text(65, "\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E23\u0E31\u0E1A\u0E2A\u0E21\u0E31\u0E04\u0E23 (Status)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(66, "select", 19);
-        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_select_ngModelChange_66_listener($event) {
-          \u0275\u0275twoWayBindingSet(ctx.selectedStatus, $event) || (ctx.selectedStatus = $event);
-          return $event;
-        });
-        \u0275\u0275listener("change", function JobListComponent_Template_select_change_66_listener() {
-          return ctx.applyFilters();
-        });
-        \u0275\u0275elementStart(67, "option", 32);
-        \u0275\u0275text(68, "\u0E40\u0E09\u0E1E\u0E32\u0E30\u0E17\u0E35\u0E48\u0E40\u0E1B\u0E34\u0E14\u0E23\u0E31\u0E1A\u0E2A\u0E21\u0E31\u0E04\u0E23 (Open Only)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(69, "option", 20);
-        \u0275\u0275text(70, "\u0E41\u0E2A\u0E14\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 (All Status)");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(71, "option", 33);
-        \u0275\u0275text(72, "\u0E1B\u0E34\u0E14\u0E23\u0E31\u0E1A\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E41\u0E25\u0E49\u0E27 (Closed Only)");
+        \u0275\u0275elementStart(14, "div", 11);
+        \u0275\u0275template(15, JobListComponent_ng_container_15_Template, 8, 1, "ng-container", 12)(16, JobListComponent_ng_template_16_Template, 5, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
         \u0275\u0275elementEnd()()()();
-        \u0275\u0275elementStart(73, "div", 34)(74, "span");
-        \u0275\u0275text(75, "\u0E1E\u0E1A\u0E17\u0E31\u0E49\u0E07\u0E2A\u0E34\u0E49\u0E19 ");
-        \u0275\u0275elementStart(76, "strong", 35);
-        \u0275\u0275text(77);
+        \u0275\u0275elementStart(18, "div", 13)(19, "div", 14)(20, "div", 15)(21, "h1", 16)(22, "span");
+        \u0275\u0275text(23, "\u{1F4C2}");
         \u0275\u0275elementEnd();
-        \u0275\u0275text(78, " \u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07");
+        \u0275\u0275text(24, " \u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 ");
         \u0275\u0275elementEnd();
-        \u0275\u0275template(79, JobListComponent_Conditional_79_Template, 2, 0, "button", 36);
+        \u0275\u0275elementStart(25, "p", 17);
+        \u0275\u0275text(26, "\u0E04\u0E49\u0E19\u0E2B\u0E32\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E48\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E04\u0E38\u0E13 \u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E49\u0E32\u0E27\u0E2A\u0E39\u0E48\u0E2D\u0E19\u0E32\u0E04\u0E15\u0E17\u0E35\u0E48\u0E14\u0E35\u0E01\u0E27\u0E48\u0E32\u0E41\u0E25\u0E30\u0E40\u0E15\u0E34\u0E1A\u0E42\u0E15\u0E43\u0E19\u0E2A\u0E32\u0E22\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E04\u0E38\u0E13\u0E23\u0E31\u0E01");
         \u0275\u0275elementEnd()();
-        \u0275\u0275template(80, JobListComponent_Conditional_80_Template, 10, 1, "div", 37)(81, JobListComponent_Conditional_81_Template, 13, 1, "div", 38)(82, JobListComponent_Conditional_82_Template, 12, 1, "div", 39)(83, JobListComponent_Conditional_83_Template, 3, 0, "div", 40);
+        \u0275\u0275elementStart(27, "div", 18)(28, "span", 19);
+        \u0275\u0275text(29, "\u{1F4A1}");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(30, "div")(31, "p", 20);
+        \u0275\u0275text(32, "\u0E07\u0E32\u0E19\u0E14\u0E35\u0E46 \u0E23\u0E2D\u0E04\u0E38\u0E13\u0E2D\u0E22\u0E39\u0E48 \u2728");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(33, "p", 21);
+        \u0275\u0275text(34, "Good Job & Better You \u{1F49B}");
+        \u0275\u0275elementEnd()()()()();
+        \u0275\u0275elementStart(35, "div", 22)(36, "div", 23)(37, "div", 24)(38, "div", 25)(39, "h2", 26)(40, "span", 27);
+        \u0275\u0275text(41, "\u{1F50D}");
+        \u0275\u0275elementEnd();
+        \u0275\u0275text(42, " \u0E04\u0E49\u0E19\u0E2B\u0E32\u0E07\u0E32\u0E19\u0E15\u0E32\u0E21\u0E40\u0E07\u0E37\u0E48\u0E2D\u0E19\u0E44\u0E02 ");
         \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(43, "div")(44, "label", 28);
+        \u0275\u0275text(45, "\u0E04\u0E33\u0E04\u0E49\u0E19\u0E2B\u0E32\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19, \u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17...");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(46, "input", 29);
+        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_input_ngModelChange_46_listener($event) {
+          \u0275\u0275restoreView(_r1);
+          \u0275\u0275twoWayBindingSet(ctx.searchKeyword, $event) || (ctx.searchKeyword = $event);
+          return \u0275\u0275resetView($event);
+        });
+        \u0275\u0275listener("input", function JobListComponent_Template_input_input_46_listener() {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.filterJobs());
+        });
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(47, "div")(48, "label", 28);
+        \u0275\u0275text(49, "\u{1F4BC} \u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E07\u0E32\u0E19");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(50, "select", 30);
+        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_select_ngModelChange_50_listener($event) {
+          \u0275\u0275restoreView(_r1);
+          \u0275\u0275twoWayBindingSet(ctx.selectedJobType, $event) || (ctx.selectedJobType = $event);
+          return \u0275\u0275resetView($event);
+        });
+        \u0275\u0275listener("change", function JobListComponent_Template_select_change_50_listener() {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.filterJobs());
+        });
+        \u0275\u0275elementStart(51, "option", 31);
+        \u0275\u0275text(52, "\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(53, "option", 32);
+        \u0275\u0275text(54, "Full-time");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(55, "option", 33);
+        \u0275\u0275text(56, "Internship");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(57, "option", 34);
+        \u0275\u0275text(58, "Part-time");
+        \u0275\u0275elementEnd()()();
+        \u0275\u0275elementStart(59, "div")(60, "label", 28);
+        \u0275\u0275text(61, "\u{1F4BB} \u0E23\u0E39\u0E1B\u0E41\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E17\u0E33\u0E07\u0E32\u0E19");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(62, "select", 30);
+        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_select_ngModelChange_62_listener($event) {
+          \u0275\u0275restoreView(_r1);
+          \u0275\u0275twoWayBindingSet(ctx.selectedWorkplacetype, $event) || (ctx.selectedWorkplacetype = $event);
+          return \u0275\u0275resetView($event);
+        });
+        \u0275\u0275listener("change", function JobListComponent_Template_select_change_62_listener() {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.filterJobs());
+        });
+        \u0275\u0275elementStart(63, "option", 31);
+        \u0275\u0275text(64, "\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(65, "option", 35);
+        \u0275\u0275text(66, "Hybrid Work");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(67, "option", 36);
+        \u0275\u0275text(68, "On-site");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(69, "option", 37);
+        \u0275\u0275text(70, "Remote");
+        \u0275\u0275elementEnd()()();
+        \u0275\u0275elementStart(71, "div")(72, "label", 28);
+        \u0275\u0275text(73, "\u{1F4CD} \u0E20\u0E32\u0E04 / \u0E08\u0E31\u0E07\u0E2B\u0E27\u0E31\u0E14");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(74, "select", 30);
+        \u0275\u0275twoWayListener("ngModelChange", function JobListComponent_Template_select_ngModelChange_74_listener($event) {
+          \u0275\u0275restoreView(_r1);
+          \u0275\u0275twoWayBindingSet(ctx.selectedRegion, $event) || (ctx.selectedRegion = $event);
+          return \u0275\u0275resetView($event);
+        });
+        \u0275\u0275listener("change", function JobListComponent_Template_select_change_74_listener() {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.filterJobs());
+        });
+        \u0275\u0275elementStart(75, "option", 31);
+        \u0275\u0275text(76, "\u0E17\u0E38\u0E01\u0E20\u0E39\u0E21\u0E34\u0E20\u0E32\u0E04");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(77, "option", 38);
+        \u0275\u0275text(78, "\u0E20\u0E32\u0E04\u0E01\u0E25\u0E32\u0E07");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(79, "option", 39);
+        \u0275\u0275text(80, "\u0E20\u0E32\u0E04\u0E40\u0E2B\u0E19\u0E37\u0E2D");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(81, "option", 40);
+        \u0275\u0275text(82, "\u0E20\u0E32\u0E04\u0E43\u0E15\u0E49");
+        \u0275\u0275elementEnd()()();
+        \u0275\u0275elementStart(83, "div", 41)(84, "button", 42);
+        \u0275\u0275listener("click", function JobListComponent_Template_button_click_84_listener() {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.resetFilters());
+        });
+        \u0275\u0275text(85, " \u21BA \u0E25\u0E49\u0E32\u0E07\u0E15\u0E31\u0E27\u0E01\u0E23\u0E2D\u0E07\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 ");
+        \u0275\u0275elementEnd()()();
+        \u0275\u0275elementStart(86, "div", 43)(87, "div", 44)(88, "span", 45);
+        \u0275\u0275text(89);
+        \u0275\u0275elementEnd()();
+        \u0275\u0275template(90, JobListComponent_div_90_Template, 39, 17, "div", 46);
+        \u0275\u0275elementEnd()()()();
       }
       if (rf & 2) {
-        \u0275\u0275advance(12);
-        \u0275\u0275conditional(ctx.stats ? 12 : -1);
-        \u0275\u0275advance(7);
+        const loginTemplate_r6 = \u0275\u0275reference(17);
+        \u0275\u0275advance(15);
+        \u0275\u0275property("ngIf", ctx.currentUser)("ngIfElse", loginTemplate_r6);
+        \u0275\u0275advance(31);
         \u0275\u0275twoWayProperty("ngModel", ctx.searchKeyword);
-        \u0275\u0275advance(7);
-        \u0275\u0275twoWayProperty("ngModel", ctx.selectedCategory);
-        \u0275\u0275advance(16);
+        \u0275\u0275advance(4);
         \u0275\u0275twoWayProperty("ngModel", ctx.selectedJobType);
         \u0275\u0275advance(12);
-        \u0275\u0275twoWayProperty("ngModel", ctx.selectedWorkplaceType);
+        \u0275\u0275twoWayProperty("ngModel", ctx.selectedWorkplacetype);
         \u0275\u0275advance(12);
-        \u0275\u0275twoWayProperty("ngModel", ctx.selectedStatus);
-        \u0275\u0275advance(11);
-        \u0275\u0275textInterpolate(ctx.jobs.length);
-        \u0275\u0275advance(2);
-        \u0275\u0275conditional(ctx.hasActiveFilters() ? 79 : -1);
+        \u0275\u0275twoWayProperty("ngModel", ctx.selectedRegion);
+        \u0275\u0275advance(15);
+        \u0275\u0275textInterpolate1("\u0E1E\u0E1A\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E40\u0E1B\u0E34\u0E14\u0E23\u0E31\u0E1A\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 ", ctx.filteredJobs.length, " \u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07");
         \u0275\u0275advance();
-        \u0275\u0275conditional(ctx.isLoading ? 80 : ctx.hasError ? 81 : ctx.jobs.length === 0 ? 82 : 83);
+        \u0275\u0275property("ngForOf", ctx.filteredJobs);
       }
-    }, dependencies: [CommonModule, DecimalPipe, FormsModule, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgModel, RouterLink], encapsulation: 2 });
+    }, dependencies: [CommonModule, NgForOf, NgIf, DecimalPipe, DatePipe, FormsModule, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgModel, RouterModule, RouterLink], encapsulation: 2 });
   }
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(JobListComponent, { className: "JobListComponent", filePath: "src\\app\\pages\\job-list\\job-list.component.ts", lineNumber: 333 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(JobListComponent, { className: "JobListComponent", filePath: "src\\app\\pages\\job-list\\job-list.component.ts", lineNumber: 191 });
 })();
 
 // src/app/pages/job-detail/job-detail.component.ts
-var _c02 = (a0) => ["/jobs", a0, "edit"];
+var _c0 = (a0) => ["/jobs", a0, "edit"];
 function JobDetailComponent_Conditional_8_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
@@ -42716,7 +42520,7 @@ function JobDetailComponent_Conditional_8_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r1 = \u0275\u0275nextContext();
     \u0275\u0275advance();
-    \u0275\u0275property("routerLink", \u0275\u0275pureFunction1(1, _c02, ctx_r1.job.id));
+    \u0275\u0275property("routerLink", \u0275\u0275pureFunction1(1, _c0, ctx_r1.job.id));
   }
 }
 function JobDetailComponent_Conditional_9_Template(rf, ctx) {
@@ -43313,9 +43117,9 @@ var JobDetailComponent = class _JobDetailComponent {
 })();
 
 // src/app/pages/job-form/job-form.component.ts
-var _forTrack02 = ($index, $item) => $item.id;
-var _c03 = (a0) => ["/jobs", a0];
-var _c12 = () => ["/jobs"];
+var _forTrack0 = ($index, $item) => $item.id;
+var _c02 = (a0) => ["/jobs", a0];
+var _c1 = () => ["/jobs"];
 function JobFormComponent_Conditional_25_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "div", 14);
@@ -43622,7 +43426,7 @@ var JobFormComponent = class _JobFormComponent {
         \u0275\u0275elementStart(42, "select", 22)(43, "option", 23);
         \u0275\u0275text(44, "-- \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17 --");
         \u0275\u0275elementEnd();
-        \u0275\u0275repeaterCreate(45, JobFormComponent_For_46_Template, 2, 3, "option", 24, _forTrack02);
+        \u0275\u0275repeaterCreate(45, JobFormComponent_For_46_Template, 2, 3, "option", 24, _forTrack0);
         \u0275\u0275elementEnd();
         \u0275\u0275template(47, JobFormComponent_Conditional_47_Template, 2, 0, "p", 21);
         \u0275\u0275elementEnd();
@@ -43771,7 +43575,7 @@ var JobFormComponent = class _JobFormComponent {
       }
       if (rf & 2) {
         \u0275\u0275advance(3);
-        \u0275\u0275property("routerLink", ctx.isEditMode && ctx.jobId ? \u0275\u0275pureFunction1(41, _c03, ctx.jobId) : \u0275\u0275pureFunction0(43, _c12));
+        \u0275\u0275property("routerLink", ctx.isEditMode && ctx.jobId ? \u0275\u0275pureFunction1(41, _c02, ctx.jobId) : \u0275\u0275pureFunction0(43, _c1));
         \u0275\u0275advance(4);
         \u0275\u0275textInterpolate(ctx.isEditMode ? "\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01\u0E41\u0E25\u0E30\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E2B\u0E19\u0E49\u0E32\u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14" : "\u0E22\u0E01\u0E40\u0E25\u0E34\u0E01\u0E41\u0E25\u0E30\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E2B\u0E19\u0E49\u0E32\u0E23\u0E27\u0E21\u0E07\u0E32\u0E19");
         \u0275\u0275advance(2);
@@ -43827,7 +43631,7 @@ var JobFormComponent = class _JobFormComponent {
         \u0275\u0275advance();
         \u0275\u0275conditional(ctx.isFieldInvalid("contactEmail") ? 153 : -1);
         \u0275\u0275advance(14);
-        \u0275\u0275property("routerLink", ctx.isEditMode && ctx.jobId ? \u0275\u0275pureFunction1(44, _c03, ctx.jobId) : \u0275\u0275pureFunction0(46, _c12));
+        \u0275\u0275property("routerLink", ctx.isEditMode && ctx.jobId ? \u0275\u0275pureFunction1(44, _c02, ctx.jobId) : \u0275\u0275pureFunction0(46, _c1));
         \u0275\u0275advance(2);
         \u0275\u0275property("disabled", ctx.isSubmitting || ctx.hasStipendConflict());
         \u0275\u0275advance();
@@ -43842,6 +43646,250 @@ var JobFormComponent = class _JobFormComponent {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(JobFormComponent, { className: "JobFormComponent", filePath: "src\\app\\pages\\job-form\\job-form.component.ts", lineNumber: 365 });
 })();
 
+// src/app/services/auth.service.ts
+var AuthService = class _AuthService {
+  constructor(http) {
+    this.http = http;
+    this.apiUrl = "http://localhost:3000/api/auth";
+  }
+  login(credentials) {
+    return this.http.post(`${this.apiUrl}/login`, credentials);
+  }
+  register(data) {
+    return this.http.post(`${this.apiUrl}/register`, data);
+  }
+  static {
+    this.\u0275fac = function AuthService_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _AuthService)(\u0275\u0275inject(HttpClient));
+    };
+  }
+  static {
+    this.\u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthService, factory: _AuthService.\u0275fac, providedIn: "root" });
+  }
+};
+
+// src/app/pages/login/login.component.ts
+function LoginComponent_div_4_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 11);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", ctx_r0.errorMessage, " ");
+  }
+}
+var LoginComponent = class _LoginComponent {
+  constructor(authService, router) {
+    this.authService = authService;
+    this.router = router;
+    this.email = "";
+    this.password = "";
+    this.errorMessage = "";
+  }
+  onLogin() {
+    this.authService.login({ email: this.email, password: this.password }).subscribe({
+      next: (res) => {
+        alert("\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08!");
+        localStorage.setItem("user", JSON.stringify(res.user));
+        this.router.navigate(["/jobs"]);
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message || "\u0E2D\u0E35\u0E40\u0E21\u0E25\u0E2B\u0E23\u0E37\u0E2D\u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19\u0E44\u0E21\u0E48\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07";
+      }
+    });
+  }
+  static {
+    this.\u0275fac = function LoginComponent_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _LoginComponent)(\u0275\u0275directiveInject(AuthService), \u0275\u0275directiveInject(Router));
+    };
+  }
+  static {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 16, vars: 3, consts: [[1, "min-h-screen", "flex", "items-center", "justify-center", "bg-gray-100"], [1, "max-w-md", "w-full", "bg-white", "rounded-lg", "shadow-md", "p-8"], [1, "text-2xl", "font-bold", "text-center", "text-gray-800", "mb-6"], ["class", "mb-4 p-3 bg-red-100 text-red-700 rounded text-sm", 4, "ngIf"], [3, "submit"], [1, "mb-4"], [1, "block", "text-gray-700", "text-sm", "font-bold", "mb-2"], ["type", "email", "name", "email", "required", "", "placeholder", "name@example.com", 1, "w-full", "px-3", "py-2", "border", "rounded-lg", "focus:outline-none", "focus:ring-2", "focus:ring-indigo-500", 3, "ngModelChange", "ngModel"], [1, "mb-6"], ["type", "password", "name", "password", "required", "", "placeholder", "********", 1, "w-full", "px-3", "py-2", "border", "rounded-lg", "focus:outline-none", "focus:ring-2", "focus:ring-indigo-500", 3, "ngModelChange", "ngModel"], ["type", "submit", 1, "w-full", "bg-indigo-600", "text-white", "font-bold", "py-2", "px-4", "rounded-lg", "hover:bg-indigo-700", "transition", "duration-200"], [1, "mb-4", "p-3", "bg-red-100", "text-red-700", "rounded", "text-sm"]], template: function LoginComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "h2", 2);
+        \u0275\u0275text(3, "\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A Internship & Job Board");
+        \u0275\u0275elementEnd();
+        \u0275\u0275template(4, LoginComponent_div_4_Template, 2, 1, "div", 3);
+        \u0275\u0275elementStart(5, "form", 4);
+        \u0275\u0275listener("submit", function LoginComponent_Template_form_submit_5_listener($event) {
+          ctx.onLogin();
+          return $event.preventDefault();
+        });
+        \u0275\u0275elementStart(6, "div", 5)(7, "label", 6);
+        \u0275\u0275text(8, "\u0E2D\u0E35\u0E40\u0E21\u0E25 (Email)");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(9, "input", 7);
+        \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_9_listener($event) {
+          \u0275\u0275twoWayBindingSet(ctx.email, $event) || (ctx.email = $event);
+          return $event;
+        });
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(10, "div", 8)(11, "label", 6);
+        \u0275\u0275text(12, "\u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19 (Password)");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(13, "input", 9);
+        \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_13_listener($event) {
+          \u0275\u0275twoWayBindingSet(ctx.password, $event) || (ctx.password = $event);
+          return $event;
+        });
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(14, "button", 10);
+        \u0275\u0275text(15, " \u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A ");
+        \u0275\u0275elementEnd()()()();
+      }
+      if (rf & 2) {
+        \u0275\u0275advance(4);
+        \u0275\u0275property("ngIf", ctx.errorMessage);
+        \u0275\u0275advance(5);
+        \u0275\u0275twoWayProperty("ngModel", ctx.email);
+        \u0275\u0275advance(4);
+        \u0275\u0275twoWayProperty("ngModel", ctx.password);
+      }
+    }, dependencies: [CommonModule, NgIf, FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm] });
+  }
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src\\app\\pages\\login\\login.component.ts", lineNumber: 14 });
+})();
+
+// src/app/pages/register/register.component.ts
+function RegisterComponent_div_9_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 16);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", ctx_r0.errorMessage, " ");
+  }
+}
+function RegisterComponent_div_10_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 17);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", ctx_r0.successMessage, " ");
+  }
+}
+var RegisterComponent = class _RegisterComponent {
+  constructor(http, router) {
+    this.http = http;
+    this.router = router;
+    this.name = "";
+    this.email = "";
+    this.password = "";
+    this.errorMessage = "";
+    this.successMessage = "";
+  }
+  onRegister() {
+    if (!this.email || !this.password) {
+      this.errorMessage = "\u0E01\u0E23\u0E38\u0E13\u0E32\u0E01\u0E23\u0E2D\u0E01\u0E2D\u0E35\u0E40\u0E21\u0E25\u0E41\u0E25\u0E30\u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19\u0E43\u0E2B\u0E49\u0E04\u0E23\u0E1A\u0E16\u0E49\u0E27\u0E19";
+      return;
+    }
+    this.http.post("http://localhost:3000/api/auth/register", {
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      role: "STUDENT"
+    }).subscribe({
+      next: (res) => {
+        this.successMessage = "\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08! \u0E01\u0E33\u0E25\u0E31\u0E07\u0E1E\u0E32\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E2B\u0E19\u0E49\u0E32\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A...";
+        this.errorMessage = "";
+        setTimeout(() => {
+          this.router.navigate(["/login"]);
+        }, 1500);
+      },
+      error: (err) => {
+        this.errorMessage = err.error?.message || "\u0E40\u0E01\u0E34\u0E14\u0E02\u0E49\u0E2D\u0E1C\u0E34\u0E14\u0E1E\u0E25\u0E32\u0E14\u0E43\u0E19\u0E01\u0E32\u0E23\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01 \u0E01\u0E23\u0E38\u0E13\u0E32\u0E25\u0E2D\u0E07\u0E43\u0E2B\u0E21\u0E48\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07";
+        this.successMessage = "";
+      }
+    });
+  }
+  static {
+    this.\u0275fac = function RegisterComponent_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _RegisterComponent)(\u0275\u0275directiveInject(HttpClient), \u0275\u0275directiveInject(Router));
+    };
+  }
+  static {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _RegisterComponent, selectors: [["app-register"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 30, vars: 5, consts: [[1, "min-h-screen", "bg-[#FFFBF7]", "flex", "items-center", "justify-center", "p-4", "font-sans"], [1, "max-w-md", "w-full", "bg-white", "rounded-3xl", "shadow-sm", "border", "border-orange-100", "p-8", "space-y-6"], [1, "text-center", "space-y-2"], [1, "inline-block", "bg-orange-500", "text-white", "p-3", "rounded-2xl", "shadow-xs", "text-xl", "font-bold"], [1, "text-2xl", "font-extrabold", "text-gray-900"], [1, "text-xs", "text-gray-500"], ["class", "bg-red-50 border border-red-200 text-red-600 text-xs p-3 rounded-xl", 4, "ngIf"], ["class", "bg-emerald-50 border border-emerald-200 text-emerald-600 text-xs p-3 rounded-xl", 4, "ngIf"], [1, "space-y-4"], [1, "block", "text-xs", "font-semibold", "text-gray-600", "mb-1"], ["type", "text", "placeholder", "\u0E23\u0E30\u0E1A\u0E38\u0E0A\u0E37\u0E48\u0E2D\u0E02\u0E2D\u0E07\u0E04\u0E38\u0E13", 1, "w-full", "text-xs", "border", "border-gray-200", "rounded-xl", "px-3.5", "py-3", "focus:outline-none", "focus:ring-2", "focus:ring-orange-400", "bg-gray-50/50", 3, "ngModelChange", "ngModel"], ["type", "email", "placeholder", "name@example.com", 1, "w-full", "text-xs", "border", "border-gray-200", "rounded-xl", "px-3.5", "py-3", "focus:outline-none", "focus:ring-2", "focus:ring-orange-400", "bg-gray-50/50", 3, "ngModelChange", "ngModel"], ["type", "password", "placeholder", "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022", 1, "w-full", "text-xs", "border", "border-gray-200", "rounded-xl", "px-3.5", "py-3", "focus:outline-none", "focus:ring-2", "focus:ring-orange-400", "bg-gray-50/50", 3, "ngModelChange", "ngModel"], [1, "w-full", "bg-orange-500", "hover:bg-orange-600", "text-white", "font-semibold", "py-3", "rounded-xl", "text-xs", "shadow-md", "shadow-orange-500/20", "transition", "cursor-pointer", 3, "click"], [1, "text-center", "text-xs", "text-gray-500", "pt-2"], ["routerLink", "/login", 1, "text-orange-600", "font-bold", "hover:underline"], [1, "bg-red-50", "border", "border-red-200", "text-red-600", "text-xs", "p-3", "rounded-xl"], [1, "bg-emerald-50", "border", "border-emerald-200", "text-emerald-600", "text-xs", "p-3", "rounded-xl"]], template: function RegisterComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3);
+        \u0275\u0275text(4, " \u{1F4BC} ");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(5, "h1", 4);
+        \u0275\u0275text(6, "\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E1A\u0E31\u0E0D\u0E0A\u0E35\u0E1C\u0E39\u0E49\u0E43\u0E0A\u0E49\u0E43\u0E2B\u0E21\u0E48");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(7, "p", 5);
+        \u0275\u0275text(8, "\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E23\u0E34\u0E48\u0E21\u0E15\u0E49\u0E19\u0E04\u0E49\u0E19\u0E2B\u0E32\u0E41\u0E25\u0E30\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E07\u0E32\u0E19\u0E01\u0E31\u0E1A\u0E40\u0E23\u0E32");
+        \u0275\u0275elementEnd()();
+        \u0275\u0275template(9, RegisterComponent_div_9_Template, 2, 1, "div", 6)(10, RegisterComponent_div_10_Template, 2, 1, "div", 7);
+        \u0275\u0275elementStart(11, "div", 8)(12, "div")(13, "label", 9);
+        \u0275\u0275text(14, "\u0E0A\u0E37\u0E48\u0E2D - \u0E19\u0E32\u0E21\u0E2A\u0E01\u0E38\u0E25");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(15, "input", 10);
+        \u0275\u0275twoWayListener("ngModelChange", function RegisterComponent_Template_input_ngModelChange_15_listener($event) {
+          \u0275\u0275twoWayBindingSet(ctx.name, $event) || (ctx.name = $event);
+          return $event;
+        });
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(16, "div")(17, "label", 9);
+        \u0275\u0275text(18, "\u0E2D\u0E35\u0E40\u0E21\u0E25");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(19, "input", 11);
+        \u0275\u0275twoWayListener("ngModelChange", function RegisterComponent_Template_input_ngModelChange_19_listener($event) {
+          \u0275\u0275twoWayBindingSet(ctx.email, $event) || (ctx.email = $event);
+          return $event;
+        });
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(20, "div")(21, "label", 9);
+        \u0275\u0275text(22, "\u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(23, "input", 12);
+        \u0275\u0275twoWayListener("ngModelChange", function RegisterComponent_Template_input_ngModelChange_23_listener($event) {
+          \u0275\u0275twoWayBindingSet(ctx.password, $event) || (ctx.password = $event);
+          return $event;
+        });
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(24, "button", 13);
+        \u0275\u0275listener("click", function RegisterComponent_Template_button_click_24_listener() {
+          return ctx.onRegister();
+        });
+        \u0275\u0275text(25, " \u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01 ");
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(26, "div", 14);
+        \u0275\u0275text(27, " \u0E21\u0E35\u0E1A\u0E31\u0E0D\u0E0A\u0E35\u0E2D\u0E22\u0E39\u0E48\u0E41\u0E25\u0E49\u0E27? ");
+        \u0275\u0275elementStart(28, "a", 15);
+        \u0275\u0275text(29, "\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A");
+        \u0275\u0275elementEnd()()()();
+      }
+      if (rf & 2) {
+        \u0275\u0275advance(9);
+        \u0275\u0275property("ngIf", ctx.errorMessage);
+        \u0275\u0275advance();
+        \u0275\u0275property("ngIf", ctx.successMessage);
+        \u0275\u0275advance(5);
+        \u0275\u0275twoWayProperty("ngModel", ctx.name);
+        \u0275\u0275advance(4);
+        \u0275\u0275twoWayProperty("ngModel", ctx.email);
+        \u0275\u0275advance(4);
+        \u0275\u0275twoWayProperty("ngModel", ctx.password);
+      }
+    }, dependencies: [CommonModule, NgIf, FormsModule, DefaultValueAccessor, NgControlStatus, NgModel, RouterModule, RouterLink, HttpClientModule], encapsulation: 2 });
+  }
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(RegisterComponent, { className: "RegisterComponent", filePath: "src\\app\\pages\\register\\register.component.ts", lineNumber: 67 });
+})();
+
 // src/app/app.routes.ts
 var routes = [
   {
@@ -43850,9 +43898,20 @@ var routes = [
     pathMatch: "full"
   },
   {
+    path: "login",
+    // เพิ่มเส้นทางไปหน้า Login
+    component: LoginComponent,
+    title: "\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A | Internship & Job Board"
+  },
+  {
+    path: "register",
+    component: RegisterComponent,
+    title: "\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01 | Internship & Job Board"
+  },
+  {
     path: "jobs",
     component: JobListComponent,
-    title: "\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19\u0E41\u0E25\u0E30\u0E17\u0E35\u0E48\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 | Internship & Job Board"
+    title: "\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07\u0E07\u0E32\u0E19\u0E41\u0E25\u0E30\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14 | Internship & Job Board"
   },
   {
     path: "jobs/new",
@@ -43884,94 +43943,10 @@ var appConfig = {
   ]
 };
 
-// src/app/components/navbar/navbar.component.ts
-var _c04 = () => ({ exact: true });
-var _c13 = () => ({ jobType: "INTERNSHIP" });
-var NavbarComponent = class _NavbarComponent {
-  static {
-    this.\u0275fac = function NavbarComponent_Factory(__ngFactoryType__) {
-      return new (__ngFactoryType__ || _NavbarComponent)();
-    };
-  }
-  static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _NavbarComponent, selectors: [["app-navbar"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 23, vars: 4, consts: [[1, "bg-white/90", "backdrop-blur-md", "border-b", "border-slate-200/80", "sticky", "top-0", "z-50", "transition-all"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8"], [1, "flex", "items-center", "justify-between", "h-16"], ["routerLink", "/jobs", 1, "flex", "items-center", "gap-3", "group"], [1, "w-10", "h-10", "rounded-xl", "bg-gradient-to-tr", "from-indigo-600", "to-violet-500", "flex", "items-center", "justify-center", "text-white", "shadow-md", "shadow-indigo-500/20", "group-hover:scale-105", "transition-transform"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-5", "h-5"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"], [1, "text-xl", "font-bold", "bg-gradient-to-r", "from-slate-900", "to-slate-700", "bg-clip-text", "text-transparent"], [1, "text-xs", "font-semibold", "px-2", "py-0.5", "ml-2", "bg-indigo-50", "text-indigo-700", "rounded-full", "border", "border-indigo-200/60"], [1, "hidden", "md:flex", "items-center", "gap-1"], ["routerLink", "/jobs", "routerLinkActive", "bg-indigo-50 text-indigo-700 font-semibold", 1, "px-4", "py-2", "text-sm", "font-medium", "text-slate-600", "hover:text-indigo-600", "rounded-lg", "transition-colors", 3, "routerLinkActiveOptions"], ["routerLink", "/jobs", 1, "px-4", "py-2", "text-sm", "font-medium", "text-slate-600", "hover:text-indigo-600", "rounded-lg", "transition-colors", 3, "queryParams"], [1, "flex", "items-center", "gap-3"], ["routerLink", "/jobs/new", 1, "inline-flex", "items-center", "gap-2", "px-4", "py-2", "text-sm", "font-medium", "text-white", "bg-gradient-to-r", "from-indigo-600", "to-violet-600", "hover:from-indigo-700", "hover:to-violet-700", "rounded-xl", "shadow-sm", "hover:shadow-indigo-500/25", "transition-all"], ["fill", "none", "stroke", "currentColor", "viewBox", "0 0 24 24", 1, "w-4", "h-4"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M12 4v16m8-8H4"]], template: function NavbarComponent_Template(rf, ctx) {
-      if (rf & 1) {
-        \u0275\u0275elementStart(0, "header", 0)(1, "div", 1)(2, "div", 2)(3, "a", 3)(4, "div", 4);
-        \u0275\u0275namespaceSVG();
-        \u0275\u0275elementStart(5, "svg", 5);
-        \u0275\u0275element(6, "path", 6);
-        \u0275\u0275elementEnd()();
-        \u0275\u0275namespaceHTML();
-        \u0275\u0275elementStart(7, "div")(8, "span", 7);
-        \u0275\u0275text(9, "JobMatch");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(10, "span", 8);
-        \u0275\u0275text(11, "Internship & Job Board");
-        \u0275\u0275elementEnd()()();
-        \u0275\u0275elementStart(12, "nav", 9)(13, "a", 10);
-        \u0275\u0275text(14, " \u0E04\u0E49\u0E19\u0E2B\u0E32\u0E07\u0E32\u0E19 (Find Jobs) ");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(15, "a", 11);
-        \u0275\u0275text(16, " \u0E17\u0E35\u0E48\u0E1D\u0E36\u0E01\u0E07\u0E32\u0E19 (Internships) ");
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(17, "div", 12)(18, "a", 13);
-        \u0275\u0275namespaceSVG();
-        \u0275\u0275elementStart(19, "svg", 14);
-        \u0275\u0275element(20, "path", 15);
-        \u0275\u0275elementEnd();
-        \u0275\u0275namespaceHTML();
-        \u0275\u0275elementStart(21, "span");
-        \u0275\u0275text(22, "\u0E25\u0E07\u0E1B\u0E23\u0E30\u0E01\u0E32\u0E28\u0E07\u0E32\u0E19 (Post Job)");
-        \u0275\u0275elementEnd()()()()()();
-      }
-      if (rf & 2) {
-        \u0275\u0275advance(13);
-        \u0275\u0275property("routerLinkActiveOptions", \u0275\u0275pureFunction0(2, _c04));
-        \u0275\u0275advance(2);
-        \u0275\u0275property("queryParams", \u0275\u0275pureFunction0(3, _c13));
-      }
-    }, dependencies: [CommonModule, RouterLink, RouterLinkActive], encapsulation: 2 });
-  }
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(NavbarComponent, { className: "NavbarComponent", filePath: "src\\app\\components\\navbar\\navbar.component.ts", lineNumber: 59 });
-})();
-
-// src/app/components/footer/footer.component.ts
-var FooterComponent = class _FooterComponent {
-  static {
-    this.\u0275fac = function FooterComponent_Factory(__ngFactoryType__) {
-      return new (__ngFactoryType__ || _FooterComponent)();
-    };
-  }
-  static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _FooterComponent, selectors: [["app-footer"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 14, vars: 0, consts: [[1, "bg-white", "border-t", "border-slate-200", "mt-auto"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8", "py-8"], [1, "flex", "flex-col", "md:flex-row", "items-center", "justify-between", "gap-4"], [1, "flex", "items-center", "gap-2"], [1, "w-7", "h-7", "rounded-lg", "bg-indigo-600", "flex", "items-center", "justify-center", "text-white", "text-xs", "font-bold"], [1, "text-sm", "text-slate-500"], [1, "flex", "items-center", "gap-6", "text-xs", "text-slate-500"]], template: function FooterComponent_Template(rf, ctx) {
-      if (rf & 1) {
-        \u0275\u0275elementStart(0, "footer", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4);
-        \u0275\u0275text(5, " JM ");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(6, "p", 5);
-        \u0275\u0275text(7, " \xA9 2026 ");
-        \u0275\u0275elementStart(8, "strong");
-        \u0275\u0275text(9, "Internship & Job Board");
-        \u0275\u0275elementEnd();
-        \u0275\u0275text(10, " \u2014 Full-Stack Web Application (Group 8) ");
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(11, "div", 6)(12, "span");
-        \u0275\u0275text(13, "Angular \u2022 Tailwind CSS \u2022 NestJS \u2022 PostgreSQL \u2022 Prisma");
-        \u0275\u0275elementEnd()()()()();
-      }
-    }, dependencies: [CommonModule], encapsulation: 2 });
-  }
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(FooterComponent, { className: "FooterComponent", filePath: "src\\app\\components\\footer\\footer.component.ts", lineNumber: 28 });
-})();
-
 // src/app/app.component.ts
 var AppComponent = class _AppComponent {
   constructor() {
-    this.title = "internship-job-board-frontend";
+    this.title = "frontend";
   }
   static {
     this.\u0275fac = function AppComponent_Factory(__ngFactoryType__) {
@@ -43979,21 +43954,15 @@ var AppComponent = class _AppComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 5, vars: 0, consts: [[1, "min-h-screen", "flex", "flex-col", "bg-slate-50"], [1, "flex-grow"]], template: function AppComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 1, vars: 0, template: function AppComponent_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275elementStart(0, "div", 0);
-        \u0275\u0275element(1, "app-navbar");
-        \u0275\u0275elementStart(2, "main", 1);
-        \u0275\u0275element(3, "router-outlet");
-        \u0275\u0275elementEnd();
-        \u0275\u0275element(4, "app-footer");
-        \u0275\u0275elementEnd();
+        \u0275\u0275element(0, "router-outlet");
       }
-    }, dependencies: [CommonModule, RouterOutlet, NavbarComponent, FooterComponent], encapsulation: 2 });
+    }, dependencies: [RouterOutlet], encapsulation: 2 });
   }
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AppComponent, { className: "AppComponent", filePath: "src\\app\\app.component.ts", lineNumber: 21 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AppComponent, { className: "AppComponent", filePath: "src\\app\\app.component.ts", lineNumber: 10 });
 })();
 
 // src/main.ts
