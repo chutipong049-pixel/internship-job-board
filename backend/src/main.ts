@@ -7,7 +7,10 @@ declare const process: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // เปิด CORS แบบครอบคลุมทุก Header และทุกโดเมน (Vercel เรียกได้ 100%)
+  // ตั้งค่า Prefix /api ให้ทุก Endpoint ในระบบ
+  app.setGlobalPrefix('api');
+
+  // ตั้งค่า CORS
   app.enableCors({
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
@@ -15,7 +18,6 @@ async function bootstrap() {
     credentials: true,
   });
 
-  // ตั้งค่า Validation Pipe
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
