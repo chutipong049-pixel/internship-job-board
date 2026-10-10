@@ -8,7 +8,7 @@ import { Company } from '../models/company.model';
   providedIn: 'root',
 })
 export class JobService {
-  private readonly apiUrl = 'http://localhost:3000/api';
+  private readonly apiUrl = 'https://internship-job-board.onrender.com/api';
 
   constructor(private readonly http: HttpClient) {}
 
