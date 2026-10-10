@@ -1,86 +1,51 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DashboardStats, Job, JobFilterParams } from '../models/job.model';
-import { Company } from '../models/company.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class JobService {
-  private readonly apiUrl = 'https://internship-job-board.onrender.com/api';
+  // ชี้ตรงไปยัง Backend บน Render
+  private readonly baseUrl = 'https://internship-job-board.onrender.com/api';
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  /**
-   * Fetch all jobs with optional search and filters
-   */
-  getJobs(filters?: JobFilterParams): Observable<Job[]> {
+  // ดึงรายการงานทั้งหมด พร้อมรองรับฟิลเตอร์
+  getJobs(filters?: any): Observable<any[]> {
     let params = new HttpParams();
-
     if (filters) {
-      if (filters.search && filters.search.trim()) {
-        params = params.set('search', filters.search.trim());
-      }
-      if (filters.category && filters.category !== 'ALL') {
-        params = params.set('category', filters.category);
-      }
-      if (filters.jobType && filters.jobType !== 'ALL') {
-        params = params.set('jobType', filters.jobType);
-      }
-      if (filters.workplaceType && filters.workplaceType !== 'ALL') {
-        params = params.set('workplaceType', filters.workplaceType);
-      }
-      if (filters.status && filters.status !== 'ALL') {
-        params = params.set('status', filters.status);
-      }
-      if (filters.companyId) {
-        params = params.set('companyId', filters.companyId);
-      }
+      Object.keys(filters).forEach(key => {
+        if (filters[key] !== null && filters[key] !== undefined && filters[key] !== '') {
+          params = params.set(key, filters[key]);
+        }
+      });
     }
-
-    return this.http.get<Job[]>(`${this.apiUrl}/jobs`, { params });
+    return this.http.get<any[]>(`${this.baseUrl}/jobs`, { params });
   }
 
-  /**
-   * Fetch a single job by its ID
-   */
-  getJobById(id: number): Observable<Job> {
-    return this.http.get<Job>(`${this.apiUrl}/jobs/${id}`);
+  // ดึงงานรายตำแหน่งด้วย ID
+  getJobById(id: string | number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/jobs/${id}`);
   }
 
-  /**
-   * Create a new job listing
-   */
-  createJob(jobData: any): Observable<Job> {
-    return this.http.post<Job>(`${this.apiUrl}/jobs`, jobData);
+  // ดึงรายชื่อบริษัทสำหรับ Dropdown ในฟอร์ม
+  getCompanies(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/companies`);
   }
 
-  /**
-   * Update an existing job listing
-   */
-  updateJob(id: number, jobData: any): Observable<Job> {
-    return this.http.put<Job>(`${this.apiUrl}/jobs/${id}`, jobData);
+  // สร้างประกาศงานใหม่
+  createJob(jobData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/jobs`, jobData);
   }
 
-  /**
-   * Delete a job listing
-   */
-  deleteJob(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/jobs/${id}`);
+  // แก้ไขประกาศงาน
+  updateJob(id: string | number, jobData: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/jobs/${id}`, jobData);
   }
 
-  /**
-   * Fetch overall platform statistics
-   */
-  getStats(): Observable<DashboardStats> {
-    return this.http.get<DashboardStats>(`${this.apiUrl}/jobs/stats`);
-  }
-
-  /**
-   * Fetch all companies (for select dropdown)
-   */
-  getCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>(`${this.apiUrl}/companies`);
+  // ลบประกาศงาน
+  deleteJob(id: string | number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/jobs/${id}`);
   }
 }
