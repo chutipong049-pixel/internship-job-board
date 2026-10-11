@@ -13,12 +13,12 @@ import { AuthService } from '../../services/auth.service';
   template: `
     <div class="min-h-screen bg-[#faf7f2] font-['Kanit'] text-gray-800 antialiased">
       
-      <!-- 1. Navbar ด้านบนสุด (เอาโลโก้ซ้ำทางขวาออกแล้ว เหลือโลโก้หลักอันเดียว) -->
+      <!-- 1. Navbar ด้านบนสุด -->
       <header class="bg-white/95 backdrop-blur-sm border-b border-orange-100/70 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           
           <div class="flex items-center gap-6 sm:gap-10">
-            <!-- โลโก้ JobBoard ตัวเดียวจบ ไม่ซ้อนข้อความ -->
+            <!-- โลโก้ JobBoard เดี่ยว -->
             <a routerLink="/" class="flex items-center cursor-pointer select-none">
               <img 
                 src="assets/logo.png" 
@@ -28,7 +28,7 @@ import { AuthService } from '../../services/auth.service';
               />
             </a>
 
-            <!-- เมนูนำทาง พร้อมเส้นใต้สีส้มที่เมนูหางานทั้งหมด -->
+            <!-- เมนูนำทาง -->
             <nav class="hidden md:flex items-center gap-4">
               <a routerLink="/jobs" class="relative py-2 text-sm font-bold text-[#ea580c] transition">
                 หางานทั้งหมด
@@ -40,7 +40,7 @@ import { AuthService } from '../../services/auth.service';
             </nav>
           </div>
 
-          <!-- เมนูฝั่งขวา: แสดง Username เมื่อล็อกอินแล้ว -->
+          <!-- ฝั่งขวา: Username / ล็อกอิน -->
           <div>
             <div *ngIf="!currentUser" class="flex items-center gap-4">
               <a routerLink="/login" class="text-xs font-bold text-gray-700 hover:text-[#ea580c] transition cursor-pointer">
@@ -124,6 +124,7 @@ import { AuthService } from '../../services/auth.service';
         <!-- 3. Layout ตัวกรอง และ รายการงาน -->
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
 
+          <!-- กล่องตัวกรองด้านซ้าย -->
           <div class="lg:col-span-1 bg-white rounded-3xl border border-orange-100/70 p-6 shadow-sm space-y-5">
             <h2 class="text-sm font-black text-gray-900 flex items-center gap-2">
               <svg class="w-4 h-4 text-[#ea580c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,6 +180,7 @@ import { AuthService } from '../../services/auth.service';
                 </select>
               </div>
 
+              <!-- ภาค / จังหวัด ที่เพิ่มภาคอื่นๆ เข้ามา -->
               <div>
                 <label class="block font-bold text-gray-700 mb-1.5 flex items-center gap-1.5">
                   <svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,8 +194,37 @@ import { AuthService } from '../../services/auth.service';
                   (change)="filterJobs()"
                   class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-xs focus:outline-none focus:border-[#ea580c] transition">
                   <option value="">ทุกภูมิภาค</option>
-                  <option value="กรุงเทพ">กรุงเทพมหานคร</option>
-                  <option value="เชียงใหม่">เชียงใหม่</option>
+                  
+                  <optgroup label="ภาคกลาง & ปริมณฑล">
+                    <option value="กรุงเทพ">กรุงเทพมหานคร</option>
+                    <option value="นนทบุรี">นนทบุรี</option>
+                    <option value="ปทุมธานี">ปทุมธานี</option>
+                    <option value="สมุทรปราการ">สมุทรปราการ</option>
+                  </optgroup>
+
+                  <optgroup label="ภาคเหนือ">
+                    <option value="เชียงใหม่">เชียงใหม่</option>
+                    <option value="เชียงราย">เชียงราย</option>
+                    <option value="พิษณุโลก">พิษณุโลก</option>
+                  </optgroup>
+
+                  <optgroup label="ภาคตะวันออกเฉียงเหนือ">
+                    <option value="ขอนแก่น">ขอนแก่น</option>
+                    <option value="นครราชสีมา">นครราชสีมา (โคราช)</option>
+                    <option value="อุบลราชธานี">อุบลราชธานี</option>
+                  </optgroup>
+
+                  <optgroup label="ภาคตะวันออก">
+                    <option value="ชลบุรี">ชลบุรี / พัทยา</option>
+                    <option value="ระยอง">ระยอง</option>
+                  </optgroup>
+
+                  <optgroup label="ภาคใต้">
+                    <option value="ภูเก็ต">ภูเก็ต</option>
+                    <option value="สงขลา">สงขลา / หาดใหญ่</option>
+                    <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+                    <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                  </optgroup>
                 </select>
               </div>
 
@@ -205,6 +236,7 @@ import { AuthService } from '../../services/auth.service';
             </div>
           </div>
 
+          <!-- แถบแสดงรายการงานขวา -->
           <div class="lg:col-span-3 space-y-4">
             <div class="bg-white rounded-2xl border border-orange-100/60 px-6 py-3 shadow-sm flex items-center justify-between text-xs font-semibold text-gray-600">
               <span>
@@ -218,14 +250,13 @@ import { AuthService } from '../../services/auth.service';
               </button>
             </div>
 
-            <!-- รายการการ์ดงาน -->
+            <!-- การ์ดงาน -->
             <div *ngIf="!loading && filteredJobs.length > 0" class="space-y-4">
               <div 
                 *ngFor="let job of filteredJobs"
                 class="bg-white rounded-3xl border border-orange-100/70 p-6 sm:p-7 shadow-sm hover:border-orange-200 transition duration-150 flex flex-col md:flex-row md:items-center justify-between gap-6">
                 
                 <div class="flex items-start gap-4">
-                  <!-- โลโก้บริษัทจากโฟลเดอร์ assets -->
                   <div class="w-16 h-16 rounded-2xl bg-white border border-gray-100 p-2.5 flex items-center justify-center flex-shrink-0 shadow-xs">
                     <img 
                       [src]="getCompanyLogo(job)" 
