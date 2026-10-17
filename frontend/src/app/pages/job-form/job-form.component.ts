@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, ActivatedRoute, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { JobService } from '../../services/job.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-job-form',
@@ -10,432 +12,304 @@ import { JobService } from '../../services/job.service';
   imports: [CommonModule, FormsModule, RouterModule],
   template: `
     <div class="min-h-screen bg-[#faf7f2] font-['Kanit'] py-10 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto space-y-6">
-
-        <div class="flex items-center justify-between">
-          <a routerLink="/" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-[#ea580c] transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-            </svg>
-            ยกเลิกและกลับไปหน้ารวมงาน
+      <div class="max-w-2xl mx-auto bg-white rounded-3xl p-8 border border-orange-100 shadow-sm space-y-6">
+        
+        <!-- หัวข้อ -->
+        <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+          <div>
+            <h1 class="text-xl font-black text-gray-900">ลงประกาศรับสมัครงาน</h1>
+            <p class="text-xs text-gray-500 font-medium mt-1">กรอกข้อมูลตำแหน่งงานเพื่อเผยแพร่บน JobBoard</p>
+          </div>
+          <a routerLink="/jobs" class="text-xs font-bold text-gray-400 hover:text-[#ea580c] transition">
+            ยกเลิก
           </a>
-          <span class="px-3.5 py-1.5 bg-orange-50 border border-orange-200 text-[#ea580c] text-xs font-bold rounded-full">
-            {{ isEditMode ? 'โหมดแก้ไขประกาศ (Edit Mode)' : 'โหมดลงประกาศใหม่ (Create Mode)' }}
+        </div>
+
+        <!-- ป้ายแสดงผู้ลงประกาศ -->
+        <div class="p-3.5 bg-orange-50 border border-orange-200/80 rounded-2xl flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-[#ea580c] text-white flex items-center justify-center text-xs font-black uppercase">
+              {{ (currentUser?.name || currentUser?.username || 'U').charAt(0) }}
+            </div>
+            <div>
+              <span class="text-[11px] text-gray-500 block">ลงประกาศในนาม:</span>
+              <span class="text-xs font-extrabold text-gray-800">
+                {{ currentUser?.name || currentUser?.username || 'ผู้ใช้งานทั่วไป' }}
+              </span>
+            </div>
+          </div>
+          <span class="text-[10px] bg-white px-2 py-1 rounded-full border border-orange-100 font-bold text-[#ea580c]">
+            ผู้ประกาศงาน
           </span>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-sm border border-orange-100 overflow-hidden">
+        <!-- แจ้งเตือน Error -->
+        <div *ngIf="errorMessage" class="p-3.5 bg-red-50 border border-red-200 text-red-600 rounded-2xl text-xs font-semibold">
+          {{ errorMessage }}
+        </div>
+
+        <!-- ฟอร์มกรอกข้อมูล -->
+        <form (ngSubmit)="saveJob()" class="space-y-4 text-xs font-semibold">
           
-          <div class="bg-gradient-to-r from-orange-500 to-[#ea580c] text-white px-8 py-7 shadow-sm">
-            <h1 class="text-2xl font-black tracking-tight flex items-center gap-2.5">
-              ลงประกาศรับสมัครงาน / ที่ฝึกงาน
-            </h1>
-            <p class="text-xs text-orange-100 mt-1.5 font-medium">
-              กรอกข้อมูลรายละเอียดตำแหน่งงานเพื่อให้นักศึกษาและผู้สนใจสามารถค้นหาและสมัครได้
-            </p>
+          <div>
+            <label class="block text-gray-700 mb-1.5 font-bold">ชื่อตำแหน่งงาน <span class="text-red-500">*</span></label>
+            <input 
+              type="text" 
+              [(ngModel)]="title" 
+              name="title" 
+              required
+              placeholder="เช่น Full Stack Developer"
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#ea580c] transition">
           </div>
 
-          <form (ngSubmit)="saveJob()" class="p-8 sm:p-10 space-y-8">
-
-            <div class="bg-orange-50/70 border border-orange-200 rounded-2xl p-4 text-xs space-y-1.5 text-orange-950">
-              <div class="font-bold flex items-center gap-1.5 text-orange-800">
-                กฎทางธุรกิจของระบบ (Business Rule Reminder):
-              </div>
-              <ul class="list-disc list-inside text-gray-600 pl-2 space-y-1">
-                <li>เบี้ยเลี้ยงสูงสุด (Stipend Max) ต้องมากกว่าหรือเท่ากับเบี้ยเลี้ยงขั้นต่ำ (Stipend Min) เสมอ</li>
-                <li>วันเปิดรับสมัครงานต้องเป็นวันในอนาคตสำหรับงานที่เปิดรับสมัคร</li>
-              </ul>
+          <!-- เลือกบริษัท -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 mb-1.5 font-bold">เลือกบริษัท <span class="text-red-500">*</span></label>
+              <select 
+                [(ngModel)]="companyId" 
+                name="companyId"
+                required
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#ea580c] transition">
+                <option *ngFor="let c of companies" [ngValue]="c.id">
+                  {{ c.name }}
+                </option>
+              </select>
             </div>
 
-            <div *ngIf="errorMessage" class="p-4 bg-red-50 border border-red-200 text-red-600 rounded-2xl text-xs font-medium">
-              {{ errorMessage }}
+            <!-- สายงาน / Category -->
+            <div>
+              <label class="block text-gray-700 mb-1.5 font-bold">สายงาน / หมวดหมู่ <span class="text-red-500">*</span></label>
+              <select 
+                [(ngModel)]="category" 
+                name="category"
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#ea580c] transition">
+                <option value="DEVELOPMENT">Software & Web Development</option>
+                <option value="DESIGN">Design & Multimedia</option>
+                <option value="MARKETING">Digital Marketing</option>
+                <option value="BUSINESS">Business & Management</option>
+                <option value="DATA">Data Science & AI</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 mb-1.5 font-bold">ประเภทงาน</label>
+              <select 
+                [(ngModel)]="jobType" 
+                name="jobType"
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#ea580c] transition">
+                <option value="INTERNSHIP">ฝึกงาน (Internship)</option>
+                <option value="FULL_TIME">งานประจำ (Full-Time)</option>
+                <option value="PART_TIME">งานพาร์ทไทม์ (Part-Time)</option>
+              </select>
             </div>
 
-            <div class="space-y-4">
-              <h2 class="text-sm font-bold text-gray-900">
-                1. ข้อมูลพื้นฐานของตำแหน่งงาน
-              </h2>
-
-              <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1.5">ชื่อตำแหน่งงาน (Job Title) <span class="text-[#ea580c]">*</span></label>
-                <input 
-                  type="text" 
-                  [(ngModel)]="formData.title" 
-                  name="title" 
-                  required
-                  placeholder="เช่น Frontend Developer Intern"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] focus:ring-1 focus:ring-[#ea580c] transition">
-              </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">บริษัทผู้ว่าจ้าง (Company) <span class="text-[#ea580c]">*</span></label>
-                  <select 
-                    [(ngModel)]="formData.companyId" 
-                    name="companyId" 
-                    required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm bg-white focus:outline-none focus:border-[#ea580c] transition">
-                    <option [ngValue]="null" disabled>เลือกบริษัท</option>
-                    <option *ngFor="let c of companies" [ngValue]="c.id">{{ c.name }}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">สายงาน (Category) <span class="text-[#ea580c]">*</span></label>
-                  <select 
-                    [(ngModel)]="formData.category" 
-                    name="category" 
-                    required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm bg-white focus:outline-none focus:border-[#ea580c] transition">
-                    <option value="Software Engineering">Software Engineering</option>
-                    <option value="Data & AI">Data & AI</option>
-                    <option value="Design & Multimedia">Design & Multimedia</option>
-                    <option value="Marketing & Content">Marketing & Content</option>
-                    <option value="Business & Management">Business & Management</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">ประเภทงาน (Job Type) <span class="text-[#ea580c]">*</span></label>
-                  <select 
-                    [(ngModel)]="formData.jobType" 
-                    name="jobType" 
-                    required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm bg-white focus:outline-none focus:border-[#ea580c] transition">
-                    <option value="INTERNSHIP">ฝึกงาน (Internship)</option>
-                    <option value="FULL_TIME">งานประจำ (Full-time)</option>
-                    <option value="PART_TIME">งานพาร์ทไทม์ (Part-time)</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">สถานที่ทำงาน (Workplace) <span class="text-[#ea580c]">*</span></label>
-                  <select 
-                    [(ngModel)]="formData.workplaceType" 
-                    name="workplaceType" 
-                    required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm bg-white focus:outline-none focus:border-[#ea580c] transition">
-                    <option value="HYBRID">ไฮบริด (Hybrid)</option>
-                    <option value="ON_SITE">เข้าทำงานที่ออฟฟิศ (On-site)</option>
-                    <option value="REMOTE">ทำงานจากที่บ้าน (Remote)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1.5">สถานที่ปฏิบัติงาน (Location Address) <span class="text-[#ea580c]">*</span></label>
-                <input 
-                  type="text" 
-                  [(ngModel)]="formData.location" 
-                  name="location" 
-                  required
-                  placeholder="เช่น กรุงเทพมหานคร"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition">
-              </div>
+            <div>
+              <label class="block text-gray-700 mb-1.5 font-bold">รูปแบบการทำงาน</label>
+              <select 
+                [(ngModel)]="workplaceType" 
+                name="workplaceType"
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#ea580c] transition">
+                <option value="HYBRID">Hybrid</option>
+                <option value="ON_SITE">On-Site</option>
+                <option value="REMOTE">Remote</option>
+              </select>
             </div>
+          </div>
 
-            <hr class="border-gray-100"/>
+          <div>
+            <label class="block text-gray-700 mb-1.5 font-bold">สถานที่ / จังหวัด <span class="text-red-500">*</span></label>
+            <input 
+              type="text" 
+              [(ngModel)]="location" 
+              name="location" 
+              required
+              placeholder="เช่น นครศรีธรรมราช, กรุงเทพมหานคร"
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#ea580c] transition">
+          </div>
 
-            <div class="space-y-4">
-              <h2 class="text-sm font-bold text-gray-900">
-                2. ค่าตอบแทนและกำหนดการ
-              </h2>
-
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">เบี้ยเลี้ยงต่ำสุด (บาท/เดือน)</label>
-                  <input 
-                    type="number" 
-                    [(ngModel)]="formData.stipendMin" 
-                    name="stipendMin" 
-                    placeholder="เช่น 10000"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition">
-                </div>
-
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">เบี้ยเลี้ยงสูงสุด (บาท/เดือน)</label>
-                  <input 
-                    type="number" 
-                    [(ngModel)]="formData.stipendMax" 
-                    name="stipendMax" 
-                    placeholder="เช่น 15000"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition">
-                </div>
-
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">วันปิดรับสมัคร (Deadline) <span class="text-[#ea580c]">*</span></label>
-                  <input 
-                    type="date" 
-                    [(ngModel)]="formData.applicationDeadline" 
-                    name="applicationDeadline" 
-                    required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm bg-white focus:outline-none focus:border-[#ea580c] transition">
-                </div>
-              </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 mb-1.5 font-bold">ค่าตอบแทนขั้นต่ำ (บาท)</label>
+              <input 
+                type="number" 
+                [(ngModel)]="stipendMin" 
+                name="stipendMin" 
+                placeholder="เช่น 15000"
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#ea580c] transition">
             </div>
-
-            <hr class="border-gray-100"/>
-
-            <div class="space-y-4">
-              <h2 class="text-sm font-bold text-gray-900">
-                3. รายละเอียดและคุณสมบัติ
-              </h2>
-
-              <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1.5">รายละเอียดหน้าที่ความรับผิดชอบ <span class="text-[#ea580c]">*</span></label>
-                <textarea 
-                  [(ngModel)]="formData.description" 
-                  name="description" 
-                  rows="4" 
-                  required
-                  placeholder="อธิบายลักษณะงาน..."
-                  class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition"></textarea>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1.5">คุณสมบัติผู้สมัคร (Requirements) <span class="text-[#ea580c]">*</span></label>
-                <textarea 
-                  [(ngModel)]="formData.requirements" 
-                  name="requirements" 
-                  rows="3" 
-                  required
-                  placeholder="คุณสมบัติที่ต้องการ..."
-                  class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition"></textarea>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1.5">สวัสดิการ (Benefits)</label>
-                <textarea 
-                  [(ngModel)]="formData.benefits" 
-                  name="benefits" 
-                  rows="3" 
-                  placeholder="สวัสดิการเพิ่มเติม..."
-                  class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition"></textarea>
-              </div>
+            <div>
+              <label class="block text-gray-700 mb-1.5 font-bold">ค่าตอบแทนสูงสุด (บาท)</label>
+              <input 
+                type="number" 
+                [(ngModel)]="stipendMax" 
+                name="stipendMax" 
+                placeholder="เช่น 25000"
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#ea580c] transition">
             </div>
+          </div>
 
-            <hr class="border-gray-100"/>
+          <!-- วันปิดรับสมัคร -->
+          <div>
+            <label class="block text-gray-700 mb-1.5 font-bold">วันปิดรับสมัคร <span class="text-red-500">*</span></label>
+            <input 
+              type="date" 
+              [(ngModel)]="applicationDeadline" 
+              name="applicationDeadline" 
+              required
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#ea580c] transition">
+          </div>
 
-            <div class="space-y-4">
-              <h2 class="text-sm font-bold text-gray-900">
-                4. ข้อมูลการสมัครและสถานะ
-              </h2>
+          <div>
+            <label class="block text-gray-700 mb-1.5 font-bold">รายละเอียดงาน <span class="text-red-500">*</span></label>
+            <textarea 
+              [(ngModel)]="description" 
+              name="description" 
+              rows="3" 
+              required
+              placeholder="ระบุหน้าที่ความรับผิดชอบเบื้องต้น..."
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#ea580c] transition"></textarea>
+          </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">อีเมลติดต่อ <span class="text-[#ea580c]">*</span></label>
-                  <input 
-                    type="email" 
-                    [(ngModel)]="formData.contactEmail" 
-                    name="contactEmail" 
-                    required
-                    placeholder="hr@example.com"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition">
-                </div>
+          <!-- คุณสมบัติผู้สมัคร -->
+          <div>
+            <label class="block text-gray-700 mb-1.5 font-bold">คุณสมบัติผู้สมัคร (Requirements) <span class="text-red-500">*</span></label>
+            <textarea 
+              [(ngModel)]="requirements" 
+              name="requirements" 
+              rows="3" 
+              required
+              placeholder="เช่น สามารถใช้งาน Angular, TypeScript หรือ Git ได้..."
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#ea580c] transition"></textarea>
+          </div>
 
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">
-                    ลิงก์ระบบรับสมัคร <span class="text-gray-400 font-normal">(ถ้ามี)</span>
-                  </label>
-                  <input 
-                    type="url" 
-                    [(ngModel)]="formData.applicationUrl" 
-                    name="applicationUrl" 
-                    placeholder="https://company.com/apply"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#ea580c] transition">
-                </div>
+          <div>
+            <label class="block text-gray-700 mb-1.5 font-bold">อีเมลติดต่อรับสมัคร <span class="text-red-500">*</span></label>
+            <input 
+              type="email" 
+              [(ngModel)]="contactEmail" 
+              name="contactEmail" 
+              required
+              placeholder="hr@company.com"
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#ea580c] transition">
+          </div>
 
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">สถานะการรับสมัคร</label>
-                  <select 
-                    [(ngModel)]="formData.status" 
-                    name="status"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm bg-white focus:outline-none focus:border-[#ea580c] transition">
-                    <option value="OPEN">เปิดรับสมัคร (OPEN)</option>
-                    <option value="CLOSED">ปิดรับสมัคร (CLOSED)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-end gap-3 pt-6 border-t border-gray-100">
-              <button 
-                type="button" 
-                routerLink="/"
-                class="px-6 py-3 rounded-xl text-xs font-semibold text-gray-600 hover:bg-gray-100 transition cursor-pointer">
-                ยกเลิก
-              </button>
-              <button 
-                type="submit" 
-                [disabled]="loading"
-                class="px-8 py-3 bg-[#ea580c] hover:bg-[#d94e08] text-white font-bold text-xs rounded-xl shadow-md transition cursor-pointer disabled:opacity-50">
-                {{ loading ? 'กำลังบันทึก...' : (isEditMode ? 'อัปเดตประกาศงาน' : 'บันทึกประกาศงาน') }}
-              </button>
-            </div>
-
-          </form>
-        </div>
+          <button 
+            type="submit" 
+            [disabled]="loading || companies.length === 0"
+            class="w-full py-3 bg-[#ea580c] hover:bg-[#d94e08] text-white font-bold rounded-xl shadow-sm transition disabled:opacity-50 cursor-pointer">
+            {{ loading ? 'กำลังบันทึกข้อมูล...' : 'ยืนยันและลงประกาศงาน' }}
+          </button>
+        </form>
 
       </div>
     </div>
   `
 })
 export class JobFormComponent implements OnInit {
-  isEditMode = false;
-  jobId: string | null = null;
-  loading = false;
-  errorMessage = '';
-
+  title = '';
+  companyId: number | null = null;
   companies: any[] = [];
 
-  formData: any = {
-    title: '',
-    companyId: 1,
-    category: 'Software Engineering',
-    jobType: 'INTERNSHIP',
-    workplaceType: 'HYBRID',
-    location: '',
-    stipendMin: null,
-    stipendMax: null,
-    applicationDeadline: '',
-    description: '',
-    requirements: '',
-    benefits: '',
-    contactEmail: '',
-    applicationUrl: '',
-    status: 'OPEN'
-  };
+  category = 'DEVELOPMENT';
+  jobType = 'FULL_TIME';
+  workplaceType = 'HYBRID';
+  location = 'นครศรีธรรมราช';
+  stipendMin: number | null = 15000;
+  stipendMax: number | null = 25000;
+  applicationDeadline = '2026-12-31';
+  description = '';
+  requirements = '';
+  contactEmail = '';
+
+  loading = false;
+  errorMessage = '';
+  currentUser: any = null;
+
+  private readonly apiUrl = window.location.hostname === 'localhost'
+    ? 'http://localhost:3000/api'
+    : 'https://internship-job-board.onrender.com/api';
 
   constructor(
     private jobService: JobService,
-    private router: Router,
-    private route: ActivatedRoute
+    private authService: AuthService,
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const defaultDate = new Date();
-    defaultDate.setDate(defaultDate.getDate() + 30);
-    this.formData.applicationDeadline = defaultDate.toISOString().split('T')[0];
-
-    this.loadCompanies();
-    this.jobId = this.route.snapshot.paramMap.get('id');
-    if (this.jobId) {
-      this.isEditMode = true;
-      this.loadJobDetail(this.jobId);
+    this.currentUser = this.authService.getCurrentUser();
+    if (this.currentUser?.email) {
+      this.contactEmail = this.currentUser.email;
     }
+    this.loadCompanies();
   }
 
   loadCompanies(): void {
-    this.jobService.getCompanies().subscribe({
-      next: (data: any[]) => {
+    this.http.get<any[]>(`${this.apiUrl}/companies`).subscribe({
+      next: (data) => {
         if (data && data.length > 0) {
           this.companies = data;
-          if (!this.isEditMode) {
-            this.formData.companyId = data[0].id;
-          }
+          this.companyId = data[0].id;
         } else {
-          this.setDefaultCompanies();
+          this.companies = [{ id: 1, name: 'SCG' }];
+          this.companyId = 1;
         }
       },
-      error: () => this.setDefaultCompanies()
-    });
-  }
-
-  setDefaultCompanies(): void {
-    this.companies = [
-      { id: 1, name: 'SCG' },
-      { id: 2, name: 'Intel' },
-      { id: 3, name: 'Microsoft' },
-      { id: 4, name: 'Google' },
-      { id: 5, name: 'Shopee' }
-    ];
-    if (!this.formData.companyId) {
-      this.formData.companyId = 1;
-    }
-  }
-
-  loadJobDetail(id: string): void {
-    this.jobService.getJobById(id).subscribe({
-      next: (job: any) => {
-        this.formData = {
-          ...job,
-          jobType: job.jobType || job.type || 'INTERNSHIP',
-          workplaceType: job.workplaceType || job.workplace || 'HYBRID',
-          companyId: Number(job.companyId),
-          applicationDeadline: job.applicationDeadline 
-            ? new Date(job.applicationDeadline).toISOString().split('T')[0] 
-            : '',
-          applicationUrl: job.applicationUrl || job.applyUrl || ''
-        };
-      },
       error: () => {
-        this.errorMessage = 'ไม่สามารถโหลดข้อมูลประกาศงานได้';
+        this.companies = [{ id: 1, name: 'SCG' }];
+        this.companyId = 1;
       }
     });
   }
 
   saveJob(): void {
-    this.errorMessage = '';
-
-    if (!this.formData.title || !this.formData.description || !this.formData.contactEmail) {
-      this.errorMessage = 'กรุณากรอกข้อมูลที่จำเป็น (*) ให้ครบถ้วน';
+    if (!this.title || !this.companyId || !this.location || !this.description || !this.requirements || !this.contactEmail || !this.applicationDeadline) {
+      this.errorMessage = 'กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วนทุกช่อง';
       return;
     }
 
-    if (!this.formData.applicationDeadline) {
-      this.errorMessage = 'กรุณากำหนดวันปิดรับสมัคร (Deadline)';
+    if (this.stipendMin && this.stipendMax && Number(this.stipendMax) < Number(this.stipendMin)) {
+      this.errorMessage = 'ค่าตอบแทนสูงสุดต้องมากกว่าหรือเท่ากับค่าตอบแทนขั้นต่ำ';
       return;
-    }
-
-    if (this.formData.stipendMin && this.formData.stipendMax) {
-      if (Number(this.formData.stipendMax) < Number(this.formData.stipendMin)) {
-        this.errorMessage = 'เบี้ยเลี้ยงสูงสุดต้องมากกว่าหรือเท่ากับเบี้ยเลี้ยงขั้นต่ำ';
-        return;
-      }
     }
 
     this.loading = true;
+    this.errorMessage = '';
 
-    const payload: any = {
-      title: this.formData.title.trim(),
-      companyId: Number(this.formData.companyId),
-      category: this.formData.category,
-      jobType: this.formData.jobType,
-      workplaceType: this.formData.workplaceType,
-      location: this.formData.location.trim(),
-      description: this.formData.description.trim(),
-      requirements: this.formData.requirements.trim(),
-      benefits: this.formData.benefits ? this.formData.benefits.trim() : '',
-      contactEmail: this.formData.contactEmail.trim(),
-      applicationDeadline: this.formData.applicationDeadline,
-      status: this.formData.status || 'OPEN',
-      stipendMin: this.formData.stipendMin ? Number(this.formData.stipendMin) : 0,
-      stipendMax: this.formData.stipendMax ? Number(this.formData.stipendMax) : 0
+    // ระบุชื่อผู้ใช้ปัจจุบัน
+    const author = this.currentUser?.name || this.currentUser?.username || this.currentUser?.email?.split('@')[0] || 'User';
+
+    // แนบ [posted_by:ชื่อผู้ใช้] ไว้ท้าย description เพื่อให้ถูกบันทึกลง Database ได้อย่างแน่นอน
+    const combinedDescription = `${this.description.trim()} [posted_by:${author}]`;
+
+    const payload = {
+      title: this.title.trim(),
+      companyId: Number(this.companyId),
+      category: this.category,
+      jobType: this.jobType,
+      workplaceType: this.workplaceType,
+      location: this.location.trim(),
+      stipendMin: this.stipendMin ? Number(this.stipendMin) : 0,
+      stipendMax: this.stipendMax ? Number(this.stipendMax) : 0,
+      description: combinedDescription,
+      requirements: this.requirements.trim(),
+      applicationDeadline: this.applicationDeadline,
+      contactEmail: this.contactEmail.trim(),
+      postedBy: author
     };
 
-    if (this.formData.applicationUrl && this.formData.applicationUrl.trim()) {
-      payload.applicationUrl = this.formData.applicationUrl.trim();
-      payload.applyUrl = this.formData.applicationUrl.trim();
-    }
-
-    const action$ = (this.isEditMode && this.jobId)
-      ? this.jobService.updateJob(this.jobId, payload)
-      : this.jobService.createJob(payload);
-
-    action$.subscribe({
+    this.jobService.createJob(payload).subscribe({
       next: () => {
         this.loading = false;
         this.router.navigate(['/jobs']);
       },
-      error: (err: any) => {
+      error: (err) => {
         this.loading = false;
-        if (err?.error?.message) {
-          this.errorMessage = Array.isArray(err.error.message)
-            ? err.error.message.join(', ')
-            : err.error.message;
-        } else {
-          this.errorMessage = 'เกิดข้อผิดพลาดในการบันทึกข้อมูล กรุณาลองใหม่อีกครั้ง';
-        }
+        const msg = err?.error?.message;
+        this.errorMessage = Array.isArray(msg) ? msg.join(', ') : (msg || 'บันทึกไม่สำเร็จ กรุณาตรวจสอบข้อมูล');
       }
     });
   }

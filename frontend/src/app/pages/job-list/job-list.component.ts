@@ -271,8 +271,9 @@ import { AuthService } from '../../services/auth.service';
                       </span>
                     </div>
 
+                    <!-- แสดงรายละเอียดงาน โดยตัดแท็ก [posted_by:...] ออก -->
                     <p class="text-xs text-gray-500 line-clamp-1 max-w-xl">
-                      {{ job.description }}
+                      {{ getCleanDescription(job) }}
                     </p>
 
                     <div class="text-xs font-bold text-emerald-700 flex items-center gap-1 pt-1">
@@ -287,10 +288,21 @@ import { AuthService } from '../../services/auth.service';
                   </div>
                 </div>
 
-                <div class="flex md:flex-col items-center md:items-end justify-between md:justify-center gap-3 flex-shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-gray-100">
-                  <div class="text-[11px] text-gray-400 font-medium">
-                    โพสต์เมื่อ: {{ job.createdAt ? (job.createdAt | date:'dd/MM/yyyy') : '10/10/2026' }}
+                <!-- ฝั่งขวาของการ์ดงาน: ระบุผู้ลงประกาศงาน วันที่ และปุ่มดูรายละเอียด -->
+                <div class="flex md:flex-col items-center md:items-end justify-between md:justify-center gap-2.5 flex-shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-gray-100">
+                  
+                  <!-- ป้ายระบุว่าใครเป็นคนลงประกาศงาน (ดึงชื่อผ่าน getPostedBy) -->
+                  <div class="flex items-center gap-1.5 text-[11px] text-gray-600 font-semibold bg-orange-50/80 px-2.5 py-1 rounded-full border border-orange-200/60 shadow-2xs">
+                    <svg class="w-3.5 h-3.5 text-[#ea580c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    <span>ลงประกาศโดย: <strong class="text-gray-900 font-bold">{{ getPostedBy(job) }}</strong></span>
                   </div>
+
+                  <div class="text-[10px] text-gray-400 font-medium">
+                    โพสต์เมื่อ: {{ job.createdAt ? (job.createdAt | date:'dd/MM/yyyy') : '17/10/2026' }}
+                  </div>
+
                   <a 
                     [routerLink]="['/jobs', job.id]"
                     class="px-6 py-2.5 rounded-full bg-[#ea580c] hover:bg-[#d94e08] text-white text-xs font-bold shadow-sm shadow-orange-500/25 transition cursor-pointer">
@@ -328,7 +340,6 @@ export class JobListComponent implements OnInit, OnDestroy {
   selectedWorkplace = '';
   selectedLocation = '';
 
-  // รายชื่อ 77 จังหวัดของไทย แยกตาม 6 ภูมิภาคอย่างเป็นทางการ
   thaiProvinces = [
     {
       region: 'กรุงเทพฯ และปริมณฑล',
@@ -420,6 +431,27 @@ export class JobListComponent implements OnInit, OnDestroy {
     });
   }
 
+  getPostedBy(job: any): string {
+    if (job?.postedBy) return job.postedBy;
+    if (job?.user?.name) return job.user.name;
+    if (job?.user?.username) return job.user.username;
+
+    // ถอดรหัสชื่อผู้ลงประกาศจาก description
+    if (job?.description && job.description.includes('[posted_by:')) {
+      const match = job.description.match(/\[posted_by:(.*?)\]/);
+      if (match && match[1]) {
+        return match[1];
+      }
+    }
+
+    return 'HR / บัญชีทางการ';
+  }
+
+  getCleanDescription(job: any): string {
+    if (!job?.description) return '';
+    return job.description.replace(/\[posted_by:.*?\]/g, '').trim();
+  }
+
   getCompanyLogo(job: any): string {
     const raw = (
       (job?.company?.name || '') + ' ' + 
@@ -446,7 +478,6 @@ export class JobListComponent implements OnInit, OnDestroy {
       const matchJobType = !this.selectedJobType || (job.jobType || job.type) === this.selectedJobType;
       const matchWorkplace = !this.selectedWorkplace || (job.workplaceType || job.workplace) === this.selectedWorkplace;
       
-      // กรองตามชื่อจังหวัด หรือข้อความที่เกี่ยวข้อง
       const matchLocation = !this.selectedLocation || 
         (job.location || '').toLowerCase().includes(this.selectedLocation.toLowerCase()) ||
         (this.selectedLocation.includes('(') && (job.location || '').includes(this.selectedLocation.split(' ')[0]));
