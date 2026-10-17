@@ -42,6 +42,7 @@ import { AuthService } from '../../services/auth.service';
 
           <!-- ฝั่งขวา: แสดง Username เมื่อล็อกอิน หรือปุ่มเข้าสู่ระบบ -->
           <div>
+            <!-- กรณีที่ยังไม่ได้ล็อกอิน -->
             <div *ngIf="!currentUser" class="flex items-center gap-4">
               <a routerLink="/login" class="text-xs font-bold text-gray-700 hover:text-[#ea580c] transition cursor-pointer">
                 เข้าสู่ระบบ
@@ -51,6 +52,7 @@ import { AuthService } from '../../services/auth.service';
               </a>
             </div>
 
+            <!-- กรณีที่ล็อกอินแล้ว แสดงชื่อโปรไฟล์ -->
             <div *ngIf="currentUser" class="flex items-center gap-3">
               <div class="flex items-center gap-2.5 px-3.5 py-1.5 bg-orange-50 border border-orange-200/80 rounded-full shadow-xs">
                 <div class="w-7 h-7 rounded-full bg-[#ea580c] text-white flex items-center justify-center text-xs font-extrabold uppercase shadow-sm">
@@ -340,6 +342,7 @@ export class JobListComponent implements OnInit, OnDestroy {
   selectedWorkplace = '';
   selectedLocation = '';
 
+  // รายชื่อ 77 จังหวัด จัดหมวดหมู่ 6 ภูมิภาคตามมาตรฐานราชการ
   thaiProvinces = [
     {
       region: 'กรุงเทพฯ และปริมณฑล',
@@ -397,8 +400,10 @@ export class JobListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    // 1. อ่านสถานะ User จาก Storage ทันทีที่เข้าหน้า
     this.currentUser = this.authService.getCurrentUser();
 
+    // 2. ฟังเหตุการณ์เมื่อเกิดการ Login/Logout แบบ Reactive
     this.authSub = this.authService.currentUser$.subscribe((user) => {
       this.currentUser = user || this.authService.getCurrentUser();
     });
@@ -431,12 +436,12 @@ export class JobListComponent implements OnInit, OnDestroy {
     });
   }
 
+  // ดึงชื่อผู้ลงประกาศงาน (รองรับทั้งฟิลด์ตรง และแท็กที่ฝังไว้)
   getPostedBy(job: any): string {
     if (job?.postedBy) return job.postedBy;
     if (job?.user?.name) return job.user.name;
     if (job?.user?.username) return job.user.username;
 
-    // ถอดรหัสชื่อผู้ลงประกาศจาก description
     if (job?.description && job.description.includes('[posted_by:')) {
       const match = job.description.match(/\[posted_by:(.*?)\]/);
       if (match && match[1]) {
@@ -447,6 +452,7 @@ export class JobListComponent implements OnInit, OnDestroy {
     return 'HR / บัญชีทางการ';
   }
 
+  // ลบแท็ก [posted_by:...] ออกจากคำอธิบายเพื่อความเรียบร้อย
   getCleanDescription(job: any): string {
     if (!job?.description) return '';
     return job.description.replace(/\[posted_by:.*?\]/g, '').trim();

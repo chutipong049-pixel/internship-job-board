@@ -6,7 +6,6 @@ import { Observable, BehaviorSubject, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  // ชี้ไปยัง URL เต็มพร้อม /api เสมอ
   private readonly apiUrl = window.location.hostname === 'localhost'
     ? 'http://localhost:3000/api'
     : 'https://internship-job-board.onrender.com/api';
@@ -19,14 +18,12 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     const inputVal = (credentials.usernameOrEmail || credentials.email || credentials.username || '').trim();
     
-    // กำหนดรูปแบบ Payload ให้รองรับทั้งแบบ Username และ Email
     const payload = {
       email: inputVal.includes('@') ? inputVal : `${inputVal}@example.com`,
       username: inputVal,
       password: credentials.password
     };
 
-    // ยิงตรงเข้า /api/auth/login เท่านั้น ไม่มีการตัด /api ทิ้ง
     return this.http.post<any>(`${this.apiUrl}/auth/login`, payload).pipe(
       tap((res) => {
         const token = res?.token || res?.accessToken || res?.access_token;

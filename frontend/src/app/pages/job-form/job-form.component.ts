@@ -34,7 +34,7 @@ import { AuthService } from '../../services/auth.service';
             <div>
               <span class="text-[11px] text-gray-500 block">ลงประกาศในนาม:</span>
               <span class="text-xs font-extrabold text-gray-800">
-                {{ currentUser?.name || currentUser?.username || 'ผู้ใช้งานทั่วไป' }}
+                {{ currentUser?.name || currentUser?.username || 'ผู้ใช้งาน' }}
               </span>
             </div>
           </div>
@@ -240,6 +240,12 @@ export class JobFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // ตรวจสอบสถานะการเข้าสู่ระบบ หากยังไม่ได้ล็อกอินให้ส่งไปหน้า Login ทันที
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     this.currentUser = this.authService.getCurrentUser();
     if (this.currentUser?.email) {
       this.contactEmail = this.currentUser.email;
@@ -279,10 +285,7 @@ export class JobFormComponent implements OnInit {
     this.loading = true;
     this.errorMessage = '';
 
-    // ระบุชื่อผู้ใช้ปัจจุบัน
     const author = this.currentUser?.name || this.currentUser?.username || this.currentUser?.email?.split('@')[0] || 'User';
-
-    // แนบ [posted_by:ชื่อผู้ใช้] ไว้ท้าย description เพื่อให้ถูกบันทึกลง Database ได้อย่างแน่นอน
     const combinedDescription = `${this.description.trim()} [posted_by:${author}]`;
 
     const payload = {
