@@ -12,18 +12,26 @@ import { AuthService } from '../../services/auth.service';
     <div class="min-h-screen bg-[#faf7f2] font-['Kanit'] flex items-center justify-center p-4">
       <div class="max-w-md w-full bg-white rounded-3xl p-8 shadow-sm border border-orange-100 space-y-6">
         
+        <!-- โลโก้ และ หัวข้อ -->
         <div class="text-center space-y-2">
-          <a routerLink="/" class="inline-flex items-center gap-2">
-            <img src="assets/logo.png" alt="JobBoard" class="h-8 w-auto object-contain" onerror="this.src='/assets/logo.png';"/>
+          <a routerLink="/" class="inline-flex items-center justify-center cursor-pointer">
+            <img 
+              src="assets/logo.png" 
+              alt="JobBoard" 
+              class="h-8 w-auto object-contain" 
+              onerror="this.src='/assets/logo.png';"
+            />
           </a>
           <h1 class="text-xl font-black text-gray-900 mt-2">เข้าสู่ระบบ</h1>
           <p class="text-xs text-gray-500 font-medium">เข้าใช้งานระบบ JobBoard ด้วยบัญชีของคุณ</p>
         </div>
 
-        <div *ngIf="errorMessage" class="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-semibold">
+        <!-- กล่องแจ้งเตือนข้อผิดพลาด -->
+        <div *ngIf="errorMessage" class="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-semibold text-center">
           {{ errorMessage }}
         </div>
 
+        <!-- ฟอร์มเข้าสู่ระบบ -->
         <form (ngSubmit)="onLogin()" class="space-y-4">
           <!-- ช่องกรอก Username / Email -->
           <div>
@@ -36,7 +44,7 @@ import { AuthService } from '../../services/auth.service';
               name="usernameOrEmail" 
               required
               placeholder="กรอก Username หรือ Email ของคุณ"
-              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#ea580c] focus:ring-1 focus:ring-[#ea580c] transition">
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#ea580c] focus:ring-1 focus:ring-[#ea580c] transition bg-blue-50/30">
           </div>
 
           <!-- ช่องกรอกรหัสผ่าน -->
@@ -48,7 +56,7 @@ import { AuthService } from '../../services/auth.service';
               name="password" 
               required
               placeholder="กรอกรหัสผ่าน"
-              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#ea580c] focus:ring-1 focus:ring-[#ea580c] transition">
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#ea580c] focus:ring-1 focus:ring-[#ea580c] transition bg-blue-50/30">
           </div>
 
           <button 
@@ -59,9 +67,10 @@ import { AuthService } from '../../services/auth.service';
           </button>
         </form>
 
+        <!-- ลิงก์ไปหน้าสมัครสมาชิก -->
         <div class="text-center text-xs text-gray-500 font-medium">
           ยังไม่มีบัญชีผู้ใช้? 
-          <a routerLink="/register" class="text-[#ea580c] font-bold hover:underline">สมัครสมาชิก</a>
+          <a routerLink="/register" class="text-[#ea580c] font-bold hover:underline ml-1">สมัครสมาชิก</a>
         </div>
 
       </div>
@@ -88,7 +97,6 @@ export class LoginComponent {
     this.loading = true;
     this.errorMessage = '';
 
-    // ส่งได้ทั้ง username หรือ email เข้า AuthService
     this.authService.login({ 
       usernameOrEmail: this.usernameOrEmail.trim(), 
       password: this.password 
@@ -99,7 +107,7 @@ export class LoginComponent {
       },
       error: (err) => {
         this.loading = false;
-        this.errorMessage = err?.error?.message || 'ชื่อผู้ใช้/อีเมล หรือรหัสผ่านไม่ถูกต้อง';
+        this.errorMessage = err?.error?.message || err?.error || 'ชื่อผู้ใช้/อีเมล หรือรหัสผ่านไม่ถูกต้อง';
       }
     });
   }

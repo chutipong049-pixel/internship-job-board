@@ -6,8 +6,8 @@ import { Observable, BehaviorSubject, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  // ชี้ไปยัง /api เสมอ ทั้ง Localhost และ Cloud บน Render
-  private readonly baseUrl = window.location.hostname === 'localhost'
+  // ชี้ไปยัง URL เต็มพร้อม /api เสมอ
+  private readonly apiUrl = window.location.hostname === 'localhost'
     ? 'http://localhost:3000/api'
     : 'https://internship-job-board.onrender.com/api';
 
@@ -19,15 +19,15 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     const inputVal = (credentials.usernameOrEmail || credentials.email || credentials.username || '').trim();
     
-    // เตรียม payload รองรับทั้งกรณีที่ backend ตรวจ email หรือ username
+    // กำหนดรูปแบบ Payload ให้รองรับทั้งแบบ Username และ Email
     const payload = {
       email: inputVal.includes('@') ? inputVal : `${inputVal}@example.com`,
       username: inputVal,
       password: credentials.password
     };
 
-    // ยิงตรงเข้า /api/auth/login เสมอ
-    return this.http.post<any>(`${this.baseUrl}/auth/login`, payload).pipe(
+    // ยิงตรงเข้า /api/auth/login เท่านั้น ไม่มีการตัด /api ทิ้ง
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, payload).pipe(
       tap((res) => {
         const token = res?.token || res?.accessToken || res?.access_token;
         if (token) {
@@ -60,8 +60,7 @@ export class AuthService {
   }
 
   register(userData: any): Observable<any> {
-    // ยิงตรงเข้า /api/auth/register เสมอ
-    return this.http.post<any>(`${this.baseUrl}/auth/register`, userData);
+    return this.http.post<any>(`${this.apiUrl}/auth/register`, userData);
   }
 
   logout(): void {
