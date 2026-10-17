@@ -15,36 +15,46 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/login`, credentials).pipe(
+  login(credentials: any): Observable<any> {
+    const inputVal = credentials.usernameOrEmail || credentials.email || credentials.username || '';
+    const payload = {
+      email: inputVal.includes('@') ? inputVal : `${inputVal}@example.com`,
+      username: inputVal,
+      password: credentials.password
+    };
+
+    return this.http.post<any>(`${this.baseUrl}/auth/login`, payload).pipe(
       catchError(() => {
         const fallbackUrl = this.baseUrl.replace('/api', '');
-        return this.http.post<any>(`${fallbackUrl}/auth/login`, credentials);
+        return this.http.post<any>(`${fallbackUrl}/auth/login`, payload);
       }),
       tap((res) => {
         const token = res?.token || res?.accessToken || res?.access_token;
         if (token) {
           localStorage.setItem('token', token);
-
-          let userData = res.user;
-          if (!userData) {
-            try {
-              const payload = JSON.parse(atob(token.split('.')[1]));
-              userData = {
-                email: payload.email || credentials.email,
-                name: payload.name || payload.username || credentials.email.split('@')[0]
-              };
-            } catch {
-              userData = {
-                email: credentials.email,
-                name: credentials.email.split('@')[0]
-              };
-            }
-          }
-
-          localStorage.setItem('user', JSON.stringify(userData));
-          this.currentUserSubject.next(userData);
         }
+
+        let displayName = res?.user?.name || res?.user?.username || res?.name || res?.username;
+        
+        if (!displayName && token) {
+          try {
+            const jwtPayload = JSON.parse(atob(token.split('.')[1]));
+            displayName = jwtPayload.name || jwtPayload.username || jwtPayload.email?.split('@')[0];
+          } catch (e) {}
+        }
+
+        if (!displayName) {
+          displayName = inputVal.includes('@') ? inputVal.split('@')[0] : inputVal;
+        }
+
+        const userData = {
+          name: displayName || 'User',
+          username: displayName || 'User',
+          email: res?.user?.email || (inputVal.includes('@') ? inputVal : `${inputVal}@example.com`)
+        };
+
+        localStorage.setItem('user', JSON.stringify(userData));
+        this.currentUserSubject.next(userData);
       })
     );
   }
@@ -65,32 +75,32 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('token') || !!localStorage.getItem('user');
   }
 
   getCurrentUser(): any {
-    return this.currentUserSubject.value;
+    return this.currentUserSubject.value || this.getUserFromStorage();
   }
 
-  private getUserFromStorage(): any {
+  public getUserFromStorage(): any {
     const userStr = localStorage.getItem('user');
     if (userStr) {
       try {
         return JSON.parse(userStr);
-      } catch {
-        return null;
-      }
+      } catch (e) {}
     }
+
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
+        const jwtPayload = JSON.parse(atob(token.split('.')[1]));
         return {
-          email: payload.email || 'User',
-          name: payload.name || payload.email?.split('@')[0] || 'User'
+          name: jwtPayload.name || jwtPayload.username || jwtPayload.email?.split('@')[0] || 'User',
+          username: jwtPayload.username || jwtPayload.name || 'User',
+          email: jwtPayload.email || 'User'
         };
-      } catch {
-        return { name: 'User' };
+      } catch (e) {
+        return { name: 'User', username: 'User' };
       }
     }
     return null;

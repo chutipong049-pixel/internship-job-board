@@ -40,7 +40,7 @@ import { AuthService } from '../../services/auth.service';
             </nav>
           </div>
 
-          <!-- ฝั่งขวา: Username / ล็อกอิน -->
+          <!-- ฝั่งขวา: แสดง Username เมื่อล็อกอิน หรือปุ่มเข้าสู่ระบบ -->
           <div>
             <div *ngIf="!currentUser" class="flex items-center gap-4">
               <a routerLink="/login" class="text-xs font-bold text-gray-700 hover:text-[#ea580c] transition cursor-pointer">
@@ -54,10 +54,10 @@ import { AuthService } from '../../services/auth.service';
             <div *ngIf="currentUser" class="flex items-center gap-3">
               <div class="flex items-center gap-2.5 px-3.5 py-1.5 bg-orange-50 border border-orange-200/80 rounded-full shadow-xs">
                 <div class="w-7 h-7 rounded-full bg-[#ea580c] text-white flex items-center justify-center text-xs font-extrabold uppercase shadow-sm">
-                  {{ (currentUser.name || currentUser.email || 'U').charAt(0) }}
+                  {{ (currentUser.name || currentUser.username || currentUser.email || 'U').charAt(0) }}
                 </div>
                 <span class="text-xs font-extrabold text-gray-800">
-                  {{ currentUser.name || currentUser.email }}
+                  {{ currentUser.name || currentUser.username || currentUser.email }}
                 </span>
               </div>
 
@@ -180,7 +180,7 @@ import { AuthService } from '../../services/auth.service';
                 </select>
               </div>
 
-              <!-- ภาค / จังหวัด ที่เพิ่มภาคอื่นๆ เข้ามา -->
+              <!-- ภาค / จังหวัด ครบ 77 จังหวัด จัดกลุ่ม 6 ภูมิภาค -->
               <div>
                 <label class="block font-bold text-gray-700 mb-1.5 flex items-center gap-1.5">
                   <svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,38 +192,11 @@ import { AuthService } from '../../services/auth.service';
                 <select 
                   [(ngModel)]="selectedLocation" 
                   (change)="filterJobs()"
-                  class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-xs focus:outline-none focus:border-[#ea580c] transition">
-                  <option value="">ทุกภูมิภาค</option>
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-xs focus:outline-none focus:border-[#ea580c] transition max-h-60">
+                  <option value="">ทุกภูมิภาค (ทั่วประเทศ)</option>
                   
-                  <optgroup label="ภาคกลาง & ปริมณฑล">
-                    <option value="กรุงเทพ">กรุงเทพมหานคร</option>
-                    <option value="นนทบุรี">นนทบุรี</option>
-                    <option value="ปทุมธานี">ปทุมธานี</option>
-                    <option value="สมุทรปราการ">สมุทรปราการ</option>
-                  </optgroup>
-
-                  <optgroup label="ภาคเหนือ">
-                    <option value="เชียงใหม่">เชียงใหม่</option>
-                    <option value="เชียงราย">เชียงราย</option>
-                    <option value="พิษณุโลก">พิษณุโลก</option>
-                  </optgroup>
-
-                  <optgroup label="ภาคตะวันออกเฉียงเหนือ">
-                    <option value="ขอนแก่น">ขอนแก่น</option>
-                    <option value="นครราชสีมา">นครราชสีมา (โคราช)</option>
-                    <option value="อุบลราชธานี">อุบลราชธานี</option>
-                  </optgroup>
-
-                  <optgroup label="ภาคตะวันออก">
-                    <option value="ชลบุรี">ชลบุรี / พัทยา</option>
-                    <option value="ระยอง">ระยอง</option>
-                  </optgroup>
-
-                  <optgroup label="ภาคใต้">
-                    <option value="ภูเก็ต">ภูเก็ต</option>
-                    <option value="สงขลา">สงขลา / หาดใหญ่</option>
-                    <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
-                    <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                  <optgroup *ngFor="let region of thaiProvinces" [label]="region.region">
+                    <option *ngFor="let p of region.provinces" [value]="p">{{ p }}</option>
                   </optgroup>
                 </select>
               </div>
@@ -355,15 +328,70 @@ export class JobListComponent implements OnInit, OnDestroy {
   selectedWorkplace = '';
   selectedLocation = '';
 
+  // รายชื่อ 77 จังหวัดของไทย แยกตาม 6 ภูมิภาคอย่างเป็นทางการ
+  thaiProvinces = [
+    {
+      region: 'กรุงเทพฯ และปริมณฑล',
+      provinces: ['กรุงเทพมหานคร', 'นนทบุรี', 'ปทุมธานี', 'สมุทรปราการ', 'สมุทรสาคร', 'นครปฐม']
+    },
+    {
+      region: 'ภาคกลาง',
+      provinces: [
+        'พระนครศรีอยุธยา', 'อ่างทอง', 'ลพบุรี', 'สิงห์บุรี', 'ชัยนาท', 'สระบุรี',
+        'สุพรรณบุรี', 'นครนายก', 'กำแพงเพชร', 'พิจิตร', 'พิษณุโลก', 'สุโขทัย',
+        'เพชรบูรณ์', 'อุทัยธานี', 'นครสวรรค์'
+      ]
+    },
+    {
+      region: 'ภาคเหนือ',
+      provinces: [
+        'เชียงใหม่', 'เชียงราย', 'ลำปาง', 'ลำพูน', 'แม่ฮ่องสอน', 'น่าน',
+        'พะเยา', 'แพร่', 'อุตรดิตถ์'
+      ]
+    },
+    {
+      region: 'ภาคตะวันออกเฉียงเหนือ (อีสาน)',
+      provinces: [
+        'ขอนแก่น', 'นครราชสีมา (โคราช)', 'อุดรธานี', 'อุบลราชธานี', 'กาฬสินธุ์',
+        'ชัยภูมิ', 'นครพนม', 'บึงกาฬ', 'บุรีรัมย์', 'มหาสารคาม', 'มุกดาหาร',
+        'ยโสธร', 'ร้อยเอ็ด', 'เลย', 'ศรีสะเกษ', 'สกลนคร', 'สุรินทร์', 'หนองคาย',
+        'หนองบัวลำภู', 'อำนาจเจริญ'
+      ]
+    },
+    {
+      region: 'ภาคตะวันออก',
+      provinces: [
+        'ชลบุรี', 'ระยอง', 'จันทบุรี', 'ตราด', 'ฉะเชิงเทรา', 'ปราจีนบุรี', 'สระแก้ว'
+      ]
+    },
+    {
+      region: 'ภาคตะวันตก',
+      provinces: [
+        'กาญจนบุรี', 'ตาก', 'ประจวบคีรีขันธ์', 'เพชรบุรี', 'ราชบุรี'
+      ]
+    },
+    {
+      region: 'ภาคใต้',
+      provinces: [
+        'ภูเก็ต', 'สงขลา (หาดใหญ่)', 'นครศรีธรรมราช', 'สุราษฎร์ธานี', 'กระบี่',
+        'ชุมพร', 'ตรัง', 'พังงา', 'พัทลุง', 'ระนอง', 'สตูล', 'ปัตตานี',
+        'ยะลา', 'นราธิวาส'
+      ]
+    }
+  ];
+
   constructor(
     private jobService: JobService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
+
     this.authSub = this.authService.currentUser$.subscribe((user) => {
-      this.currentUser = user;
+      this.currentUser = user || this.authService.getCurrentUser();
     });
+
     this.loadJobs();
   }
 
@@ -373,6 +401,7 @@ export class JobListComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.authService.logout();
+    this.currentUser = null;
   }
 
   loadJobs(): void {
@@ -416,7 +445,11 @@ export class JobListComponent implements OnInit, OnDestroy {
 
       const matchJobType = !this.selectedJobType || (job.jobType || job.type) === this.selectedJobType;
       const matchWorkplace = !this.selectedWorkplace || (job.workplaceType || job.workplace) === this.selectedWorkplace;
-      const matchLocation = !this.selectedLocation || (job.location || '').includes(this.selectedLocation);
+      
+      // กรองตามชื่อจังหวัด หรือข้อความที่เกี่ยวข้อง
+      const matchLocation = !this.selectedLocation || 
+        (job.location || '').toLowerCase().includes(this.selectedLocation.toLowerCase()) ||
+        (this.selectedLocation.includes('(') && (job.location || '').includes(this.selectedLocation.split(' ')[0]));
 
       return matchSearch && matchJobType && matchWorkplace && matchLocation;
     });

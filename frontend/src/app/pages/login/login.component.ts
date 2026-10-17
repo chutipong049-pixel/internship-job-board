@@ -9,83 +9,67 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   template: `
-    <div class="min-h-screen bg-white flex items-center justify-center p-4">
-      <!-- การ์ดกรอบโค้งมน พร้อมขอบสีส้มจาง ๆ สไตล์เดียวกับหน้า Register -->
-      <div class="w-full max-w-[420px] bg-white rounded-3xl border border-orange-100/80 p-8 sm:p-10 shadow-sm text-center">
+    <div class="min-h-screen bg-[#faf7f2] font-['Kanit'] flex items-center justify-center p-4">
+      <div class="max-w-md w-full bg-white rounded-3xl p-8 shadow-sm border border-orange-100 space-y-6">
         
-        <!-- ไอคอนกระเป๋าสีส้ม -->
-        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#ea580c] text-white shadow-md shadow-orange-500/20 mb-5">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-            <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
-          </svg>
+        <div class="text-center space-y-2">
+          <a routerLink="/" class="inline-flex items-center gap-2">
+            <img src="assets/logo.png" alt="JobBoard" class="h-8 w-auto object-contain" onerror="this.src='/assets/logo.png';"/>
+          </a>
+          <h1 class="text-xl font-black text-gray-900 mt-2">เข้าสู่ระบบ</h1>
+          <p class="text-xs text-gray-500 font-medium">เข้าใช้งานระบบ JobBoard ด้วยบัญชีของคุณ</p>
         </div>
 
-        <!-- หัวข้อหลักและคำบรรยาย -->
-        <h1 class="text-2xl font-bold text-gray-900 tracking-tight">
-          เข้าสู่ระบบ
-        </h1>
-        <p class="text-xs text-gray-500 mt-1.5 mb-6">
-          ยินดีต้อนรับกลับมา ค้นหาและสมัครงานกับเรา
-        </p>
-
-        <!-- ข้อความแจ้งเตือน Error -->
-        <div *ngIf="errorMessage" class="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs text-left">
+        <div *ngIf="errorMessage" class="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-semibold">
           {{ errorMessage }}
         </div>
 
-        <!-- ฟอร์มเข้าสู่ระบบ -->
-        <form (ngSubmit)="onLogin()" class="space-y-4 text-left">
-          <!-- อีเมล -->
+        <form (ngSubmit)="onLogin()" class="space-y-4">
+          <!-- ช่องกรอก Username / Email -->
           <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-1.5">อีเมล</label>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">
+              ชื่อผู้ใช้ (Username) หรือ อีเมล
+            </label>
             <input 
-              type="email" 
-              name="email"
-              [(ngModel)]="email" 
+              type="text" 
+              [(ngModel)]="usernameOrEmail" 
+              name="usernameOrEmail" 
               required
-              placeholder="name@example.com"
-              class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition duration-150"
-            />
+              placeholder="กรอก Username หรือ Email ของคุณ"
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#ea580c] focus:ring-1 focus:ring-[#ea580c] transition">
           </div>
 
-          <!-- รหัสผ่าน -->
+          <!-- ช่องกรอกรหัสผ่าน -->
           <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-1.5">รหัสผ่าน</label>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">รหัสผ่าน</label>
             <input 
               type="password" 
-              name="password"
               [(ngModel)]="password" 
+              name="password" 
               required
-              placeholder="••••••"
-              class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition duration-150"
-            />
+              placeholder="กรอกรหัสผ่าน"
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#ea580c] focus:ring-1 focus:ring-[#ea580c] transition">
           </div>
 
-          <!-- ปุ่มเข้าสู่ระบบสีส้มมน -->
-          <div class="pt-2">
-            <button 
-              type="submit" 
-              [disabled]="loading"
-              class="w-full py-3.5 px-4 bg-[#ea580c] hover:bg-[#d94e08] active:bg-[#c2410c] text-white font-medium rounded-xl text-sm transition-all duration-150 shadow-md shadow-orange-500/25 disabled:opacity-60 cursor-pointer">
-              {{ loading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ' }}
-            </button>
-          </div>
+          <button 
+            type="submit" 
+            [disabled]="loading"
+            class="w-full py-3 bg-[#ea580c] hover:bg-[#d94e08] text-white font-bold text-xs rounded-xl shadow-sm transition disabled:opacity-50 cursor-pointer">
+            {{ loading ? 'กำลังตรวจสอบ...' : 'เข้าสู่ระบบ' }}
+          </button>
         </form>
 
-        <!-- ลิงก์ไปหน้าสมัครสมาชิก -->
-        <p class="mt-6 text-xs text-gray-500">
-          ยังไม่มีบัญชี? 
-          <a routerLink="/register" class="font-semibold text-[#ea580c] hover:underline cursor-pointer">
-            สมัครสมาชิก
-          </a>
-        </p>
+        <div class="text-center text-xs text-gray-500 font-medium">
+          ยังไม่มีบัญชีผู้ใช้? 
+          <a routerLink="/register" class="text-[#ea580c] font-bold hover:underline">สมัครสมาชิก</a>
+        </div>
 
       </div>
     </div>
   `
 })
 export class LoginComponent {
-  email = '';
+  usernameOrEmail = '';
   password = '';
   loading = false;
   errorMessage = '';
@@ -95,23 +79,27 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  onLogin() {
-    if (!this.email || !this.password) {
-      this.errorMessage = 'กรุณากรอกอีเมลและรหัสผ่าน';
+  onLogin(): void {
+    if (!this.usernameOrEmail || !this.password) {
+      this.errorMessage = 'กรุณากรอกชื่อผู้ใช้/อีเมล และรหัสผ่านให้ครบถ้วน';
       return;
     }
 
-    this.errorMessage = '';
     this.loading = true;
+    this.errorMessage = '';
 
-    this.authService.login({ email: this.email, password: this.password }).subscribe({
+    // ส่งได้ทั้ง username หรือ email เข้า AuthService
+    this.authService.login({ 
+      usernameOrEmail: this.usernameOrEmail.trim(), 
+      password: this.password 
+    }).subscribe({
       next: () => {
         this.loading = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/jobs']);
       },
-      error: (err: any) => {
+      error: (err) => {
         this.loading = false;
-        this.errorMessage = err.error?.message || 'อีเมลหรือรหัสผ่านไม่ถูกต้อง';
+        this.errorMessage = err?.error?.message || 'ชื่อผู้ใช้/อีเมล หรือรหัสผ่านไม่ถูกต้อง';
       }
     });
   }
