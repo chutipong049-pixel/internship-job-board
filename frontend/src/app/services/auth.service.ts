@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, catchError, tap } from 'rxjs';
+import { Observable, BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  // ชี้ไปยัง /api เสมอ ทั้ง Localhost และ Cloud บน Render
   private readonly baseUrl = window.location.hostname === 'localhost'
     ? 'http://localhost:3000/api'
     : 'https://internship-job-board.onrender.com/api';
@@ -16,18 +17,17 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: any): Observable<any> {
-    const inputVal = credentials.usernameOrEmail || credentials.email || credentials.username || '';
+    const inputVal = (credentials.usernameOrEmail || credentials.email || credentials.username || '').trim();
+    
+    // เตรียม payload รองรับทั้งกรณีที่ backend ตรวจ email หรือ username
     const payload = {
       email: inputVal.includes('@') ? inputVal : `${inputVal}@example.com`,
       username: inputVal,
       password: credentials.password
     };
 
+    // ยิงตรงเข้า /api/auth/login เสมอ
     return this.http.post<any>(`${this.baseUrl}/auth/login`, payload).pipe(
-      catchError(() => {
-        const fallbackUrl = this.baseUrl.replace('/api', '');
-        return this.http.post<any>(`${fallbackUrl}/auth/login`, payload);
-      }),
       tap((res) => {
         const token = res?.token || res?.accessToken || res?.access_token;
         if (token) {
@@ -60,12 +60,8 @@ export class AuthService {
   }
 
   register(userData: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/register`, userData).pipe(
-      catchError(() => {
-        const fallbackUrl = this.baseUrl.replace('/api', '');
-        return this.http.post<any>(`${fallbackUrl}/auth/register`, userData);
-      })
-    );
+    // ยิงตรงเข้า /api/auth/register เสมอ
+    return this.http.post<any>(`${this.baseUrl}/auth/register`, userData);
   }
 
   logout(): void {
